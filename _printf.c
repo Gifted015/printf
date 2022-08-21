@@ -42,8 +42,12 @@ else if (format[i + 1] == '%')
 _putchar(format[i]), i++, len++; }
 else
 {
-_putchar(format[i]), len++; } }
+_putchar(format[i]), len++;
+if (format[i + 1] == '\0')
+len = -1; } }
 else
 {
 _putchar(format[i]), len++; } } }
+else
+return (-1);
 return (len); }
