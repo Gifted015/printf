@@ -46,6 +46,4 @@ _putchar(format[i]), len++; } }
 else
 {
 _putchar(format[i]), len++; } } }
-else
-len++;
 return (len); }
