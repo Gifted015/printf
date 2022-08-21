@@ -30,22 +30,22 @@ if (words == NULL)
 {
 for (x = 0; empty[x] != '\0'; x++)
 {
-_putchar(empty[x]); } }
+_putchar(empty[x]), len++; } }
 else
 {
 for (x = 0; words[x] != '\0'; x++)
 {
-_putchar(words[x]), len++; }
-}
+_putchar(words[x]), len++; } }
 i++; }
 else if (format[i + 1] == '%')
 {
-_putchar(format[i]), i++; }
+_putchar(format[i]), i++, len++; }
 else
 {
-_putchar(format[i]); }
-}
+_putchar(format[i]), len++; } }
 else
 {
 _putchar(format[i]), len++; } } }
+else
+len++;
 return (len); }
