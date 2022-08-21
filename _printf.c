@@ -1,7 +1,29 @@
 #include "main.h"
 
 /**
- *_printf- produces output accorting to a format
+ *null - prints the string "(null)"
+ *@len: used to add the lenght of "null" to
+ *the lenght of string originally printed
+ *Return: nothing
+ */
+
+int null(int len)
+{
+int x;
+char empty[] = "(null)";
+
+for (x = 0; empty[x] != '\0'; x++)
+{
+_putchar(empty[x]);
+len++;
+}
+
+return (len);
+}
+
+
+/**
+ *_printf - produces output accorting to a format
  *@format: character string
  *Return: the number of characters printed
  *excluding the null byte used to end output to strings
@@ -21,16 +43,13 @@ if (format[i] == '%')
 {
 if (format[i + 1] == 'c')
 {
-chr = va_arg(str, int);
-_putchar(chr), len++, i++; }
+chr = va_arg(str, int), _putchar(chr), len++, i++; }
 else if (format[i + 1] == 's')
 {
 words = va_arg(str, char *);
 if (words == NULL)
 {
-for (x = 0; empty[x] != '\0'; x++)
-{
-_putchar(empty[x]), len++; } }
+len = null(len); }
 else
 {
 for (x = 0; words[x] != '\0'; x++)
@@ -42,9 +61,10 @@ else if (format[i + 1] == '%')
 _putchar(format[i]), i++, len++; }
 else
 {
-_putchar(format[i]), len++;
 if (format[i + 1] == '\0')
-len = -1; } }
+len = -1;
+else
+_putchar(format[i]), len++; } }
 else
 {
 _putchar(format[i]), len++; } } }
