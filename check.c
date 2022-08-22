@@ -89,15 +89,15 @@ return (*i);
 
 int binary(va_list str, int *i, int *len)
 {
-int a, x, *bin;
+unsigned int a, x, *bin;
 
-for (x = va_arg(str, int), a = 0; x > 0; x = (x / 2), a++)
+for (x = va_arg(str, int), a = 1; x > 0; x = (x / 2), a++)
 {
 bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 2;
 }
 
-for (x = a - 1; x >= 0; x--)
+for (x = a - 1; x >= 1; x--)
 print_number(bin[x], len);
 
 free(bin);
