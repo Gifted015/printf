@@ -97,10 +97,19 @@ bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 2;
 }
 
+if (x != 0)
+{
 for (x = a - 1; x >= 1; x--)
+{
 print_number(bin[x], len);
-
+}
 free(bin);
+}
+else
+{
+print_number(0, len);
+}
+
 *i = (*i) + 1;
 return (*i);
 }
