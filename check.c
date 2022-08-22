@@ -20,7 +20,7 @@ if (format[(*i) + 1] == 'c')
 chr = va_arg(str, int);
 _putchar(chr);
 *len = (*len) + 1;
-*i = (*i) + 2;
+*i = (*i) + 1;
 }
 
 
@@ -41,7 +41,7 @@ _putchar(words[x]);
 *len = (*len) + 1;
 }
 }
-*i = (*i) + 2;
+*i = (*i) + 1;
 }
 return (*i);
 }
@@ -64,18 +64,16 @@ __attribute__((unused)) int in, dec;
 if (format[(*i) + 1] == 'd')
 {
 dec = va_arg(str, int);
-print_number(dec);
-*len = (*len) + 1;
-*i = (*i) + 2;
+print_number(dec, len);
+*i = (*i) + 1;
 }
 
 
 else if (format[(*i) + 1] == 'i')
 {
 in = va_arg(str, int);
-print_number(in);
-*len = (*len) + 1;
-*i = (*i) + 2;
+print_number(in, len);
+*i = (*i) + 1;
 }
 return (*i);
 }
@@ -96,11 +94,11 @@ if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
 *i = word(str, format, i, len);
 
 
-if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
+else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 *i = numbers(str, format, i, len);
 
 
-if (format[(*i) + 1] == '%')
+else if (format[(*i) + 1] == '%')
 {
 _putchar(format[(*i)]);
 *i = (*i) + 1;
