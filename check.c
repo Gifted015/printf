@@ -80,6 +80,33 @@ return (*i);
 
 
 /**
+ *binary - handles binary specifiers
+ *@str: list of variables to replace specifiers with
+ *@i: position of specifier indicator (%) in format
+ *@len: used in counting the number characters being printed
+ *Return: nothing
+ */
+
+int binary(va_list str, int *i, int *len)
+{
+int a, x, *bin;
+
+for (x = va_arg(str, int), a = 0; x > 0; x = (x / 2), a++)
+{
+bin = realloc(bin, (sizeof(int) * (a + 1)));
+bin[a] = x % 2;
+}
+
+for (x = a - 1; x >= 0; x--)
+print_number(bin[x], len);
+
+free(bin);
+*i = (*i) + 1;
+return (*i);
+}
+
+
+/**
  *check - handles specifiers
  *@str: list of variables to replace specifiers with
  *@format: the string being printed (containing specifiers)
@@ -96,6 +123,10 @@ if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
 
 else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 *i = numbers(str, format, i, len);
+
+
+else if (format[(*i) + 1] == 'b')
+*i = binary(str, i, len);
 
 
 else if (format[(*i) + 1] == '%')

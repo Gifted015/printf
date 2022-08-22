@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 int check(va_list str, const char *format, __attribute__((unused)) int *i, __attribute__((unused)) int *len);
 void null(__attribute__((unused)) int *len);
