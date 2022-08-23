@@ -89,27 +89,28 @@ return (*i);
 
 int binary(va_list str, int *i, int *len)
 {
-unsigned int a, x, *bin;
+unsigned int a, x, test,  *bin;
+test = va_arg(str, int);
 
-for (x = va_arg(str, int), a = 1; x > 0; x = (x / 2), a++)
+if (test == 0)
+{
+print_number(0, len);
+}
+
+else
+{
+for (x = test, a = 1; x > 0; x = (x / 2), a++)
 {
 bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 2;
 }
 
-if (x != 0)
-{
 for (x = a - 1; x >= 1; x--)
 {
 print_number(bin[x], len);
 }
 free(bin);
 }
-else
-{
-print_number(0, len);
-}
-
 *i = (*i) + 1;
 return (*i);
 }
