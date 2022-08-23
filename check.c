@@ -129,13 +129,16 @@ int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char uoxX[] = "uoxX";
 __attribute__((unused)) int k;
-for (k = 0; uoxX[k] != '\0'; k++)
+for (k = 0; k < 4; k++)
 {
 if (format[(*i) + 1] == uoxX[k])
-*i = check2(str, format, i, len);
+break;
 }
 
-if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
+if (format[(*i) + 1] == uoxX[k])
+*i = check2(str, format, i, len);
+
+else if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
 *i = word(str, format, i, len);
 
 else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
@@ -157,11 +160,6 @@ if (format[(*i) + 1] == '\0')
 *len = -1;
 else
 {
-for (k = 0; uoxX[k] != '\0'; k++)
-{
-if (format[(*i)] == uoxX[k])
-*i = (*i) + 1;
-}
 _putchar(format[(*i)]);
 *len = (*len) + 1;
 }

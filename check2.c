@@ -15,7 +15,6 @@ __attribute__((unused)) unsigned int x;
 x = va_arg(str, unsigned int);
 print_number(x, len);
 *i = (*i) + 1;
-
 return (*i);
 }
 
@@ -30,11 +29,29 @@ return (*i);
 
 int octal(__attribute__((unused)) va_list str, int *i, int *len)
 {
-__attribute__((unused)) unsigned int x;
+unsigned int a, x, test,  *bin;
+test = va_arg(str, int);
 
+if (test == 0)
+{
+print_number(0, len);
+}
+
+else
+{
+for (x = test, a = 1; x > 0; x = (x / 8), a++)
+{
+bin = realloc(bin, (sizeof(int) * (a + 1)));
+bin[a] = x % 8;
+}
+
+for (x = a - 1; x >= 1; x--)
+{
+print_number(bin[x], len);
+}
+free(bin);
+}
 *i = (*i) + 1;
-*len = (*len) + 1;
-
 return (*i);
 }
 
@@ -82,11 +99,12 @@ int check2(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == 'u')
 *i = unsignint(str, i, len);
-/*
-*if (format[(*i) + 1] == 'o')
+
+if (format[(*i) + 1] == 'o')
 *i = octal(str, i, len);
 
-if (format[(*i) + 1] == 'x' || format[(*i) + 1] == 'X')
+/*
+*if (format[(*i) + 1] == 'x' || format[(*i) + 1] == 'X')
 *i = hexadec(str, format, i, len);
 */
 return (*i);
