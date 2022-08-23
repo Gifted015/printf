@@ -10,6 +10,7 @@ int check(va_list str, const char *format, __attribute__((unused)) int *i, __att
 void null(__attribute__((unused)) int *len);
 int _printf(const char *format, ...);
 int _putchar(char c);
-void print_number(int n, int *len);
+void print_contd(long int n, int *len);
+void print_number(long int n, int *len);
 
 #endif

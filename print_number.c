@@ -8,9 +8,9 @@
  *Return: nothing
  */
 
-void n2(int n, int *len)
+void n2(long int n, int *len)
 {
-if (n >= 1000000000)
+if (n < 10000000000 && n >= 1000000000)
 {
 _putchar (((n % 10000000000) / 1000000000) + 48);
 _putchar (((n % 1000000000) / 100000000) + 48);
@@ -46,7 +46,7 @@ _putchar((n % 10) + 48);
  *Return: nothing
  */
 
-void n1(int n, int *len)
+void n1(long int n, int *len)
 {
 if (n < 100000000 && n >= 10000000)
 {
@@ -91,7 +91,7 @@ _putchar((n % 10) + 48);
  *Return: nothing
  */
 
-void n3(int n, int *len)
+void n3(long int n, int *len)
 {
 if (n < 100000 && n >= 10000)
 {
@@ -112,7 +112,7 @@ _putchar((n % 10) + 48);
  *Return: nothing
  */
 
-void end(int n, int *len)
+void end(long int n, int *len)
 {
 if (n == -2147483648)
 {
@@ -140,7 +140,7 @@ _putchar((n % 10) + 49);
  *Return: nothing
  */
 
-void print_number(int n, int *len)
+void print_number(long int n, int *len)
 {
 end(n, len);
 if (n < 0 && n != -2147483648)
@@ -149,7 +149,9 @@ _putchar ('-');
 n = -n;
 *len = (*len) + 1;
 }
-if (n >= 100000000)
+if (n >= 10000000000)
+print_contd(n, len);
+if (n < 10000000000 && n >= 100000000)
 n2(n, len);
 if (n < 100000000 && n >= 100000)
 n1(n, len);
@@ -179,6 +181,4 @@ _putchar((n % 10) + 48);
 if (n < 10 && n >= 0)
 {
 _putchar((n % 10) + 48);
-*len = (*len) + 1;
-}
-}
+*len = (*len) + 1; } }
