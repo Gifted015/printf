@@ -49,7 +49,6 @@ for (x = a - 1; x >= 1; x--)
 {
 print_number(bin[x], len);
 }
-free(bin);
 }
 *i = (*i) + 1;
 return (*i);
