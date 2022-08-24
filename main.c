@@ -11,8 +11,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%X", 1024);
-	len2 = printf("%X", 1024);
+	len = _printf("%u == %o == %x == %X\n", 1024, 1024, 1024, 1024);
+	len2 = printf("%u == %o == %x == %X\n", 1024, 1024, 1024, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

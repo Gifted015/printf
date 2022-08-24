@@ -33,7 +33,7 @@ return (*i);
 
 int octal(__attribute__((unused)) va_list str, int *i, int *len)
 {
-unsigned int a, x, test,  *bin;
+unsigned int a, x, test, *bin = NULL;
 test = va_arg(str, int);
 
 if (test == 0)
