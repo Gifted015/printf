@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int check2(va_list str, const char *format, __attribute__((unused)) int *i, __attribute__((unused)) int *len);
 int check(va_list str, const char *format, __attribute__((unused)) int *i, __attribute__((unused)) int *len);

@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 __attribute__((unused)) int k = 0, j = 0,  *i, *len;
-
+__attribute__((unused)) const char *buf;
 
 len = &k;
 i = &j;
@@ -34,9 +34,12 @@ _putchar(format[(*i)]);
 *len = (*len) +1;
 }
 }
+
+buf = va_arg(str, const char*);
+write(9, buf, 1024);
+
 va_end(str);
 }
-
 
 else
 return (-1);
