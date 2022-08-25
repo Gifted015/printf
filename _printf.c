@@ -28,7 +28,7 @@ break;
 }
 if (buf[(*i)] == '%')
 break;
-*len = write(1, buf, 1024) + (*len);
+*len = write(1, buf, *i) + (*len);
 b = 1;
 buf = va_arg(str, char *); }
 va_end(str);
