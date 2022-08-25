@@ -14,36 +14,36 @@ __attribute__((unused)) int k = 0, j = 0, *i, *len, a, b = 0;
 __attribute__((unused)) char *buf;
 len = &k;
 i = &j;
-
 if (format != NULL)
 {
 va_list str;
 va_start(str, format);
-buf = va_arg(str, char *);
-for (a = 0; buf[a] != '\0'; a++)
-{ }
-if (a <= 1024)
+buf = format;
+while (buf)
 {
-*len = write(1, buf, a);
-b = 1; }
+for (*i = 0; buf[(*i)] != '\0'; *i = (*i) +1)
+{
+if (buf[(*i)] == '%')
+break;
+}
+if (buf[(*i)] == '%')
+break;
+*len = write(1, buf, 1024) + (*len);
+b = 1;
+buf = va_arg(str, char *); }
 va_end(str);
-
 va_start(str, format);
+if (b != 1)
+{
 for (*i = 0; format[(*i)] != '\0'; *i = (*i) +1)
 {
 if (format[(*i)] == '%')
 {
-if (format[(*i) +1] == 's' && b == 1)
-{
-*i = (*i) +1;
-va_arg(str, char *);
-continue; }
-if (format[(*i) +1] == 'b')
 *i = check(str, format, i, len); }
 else
 {
 _putchar(format[(*i)]);
-*len = (*len) +1; } }
+*len = (*len) +1; } } }
 va_end(str); }
 else
 return (-1);
