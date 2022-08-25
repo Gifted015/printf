@@ -8,9 +8,10 @@
  *
  * Return: 0 on success, error code otherwise
  */
+
 int main(void)
 {
-char *s;
+	char *s;
 	int i;
 	int len, len2;
 
@@ -22,10 +23,11 @@ char *s;
 		i++;
 	}
 	s[i] = 0;
-	len = _printf("%s%b\n\n", s, INT_MAX);
+	len = _printf("%s%b\n", s, INT_MAX);
 	len2 = printf("%s%s\n", s, "1111111111111111111111111111111");
 	fflush(stdout);
-	printf("len: %d\tlen2: %d\n", len, len2);
+	free(s);
+   	printf("len: %d\tlen2: %d\n", len, len2);
 	if (len != len2)
 	{
 		printf("Lengths differ.\n");
