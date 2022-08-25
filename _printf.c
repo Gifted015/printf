@@ -8,7 +8,7 @@
  *excluding the null byte used to end output to strings
  */
 
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
 __attribute__((unused)) int k = 0, j = 0, *i, *len, a, b = 0;
 __attribute__((unused)) char *buf;
