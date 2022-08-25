@@ -19,7 +19,7 @@ if (format != NULL)
 va_list str;
 va_start(str, format);
 buf = format;
-while (buf)
+while (buf[1024] != '\0')
 {
 for (*i = 0; buf[(*i)] != '\0'; *i = (*i) +1)
 {
