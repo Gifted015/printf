@@ -35,7 +35,7 @@ for (b = 0; upp[b] != '\0'; b++)
 if (bin[c] == b)
 {
 for (d = 0; nonprint[d] != '\0'; d++)
-_putchar(nonprint[d]);
+_putchar(nonprint[d]), *len = (*len) + 1;
 _putchar(upp[b]);
 *len = (*len) + 1;
 }
