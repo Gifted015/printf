@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int check2(va_list str, const char *format, __attribute__((unused)) int *i, __attribute__((unused)) int *len);
-int check(va_list str, const char *format, __attribute__((unused)) int *i, __attribute__((unused)) int *len);
+int check3(va_list str, const char *format, int *i, int *len);
+int check2(va_list str, const char *format, int *i, int *len);
+int check(va_list str, const char *format, int *i, int *len);
 void null(__attribute__((unused)) int *len);
 int _printf(char *format, ...);
 int _putchar(char c);

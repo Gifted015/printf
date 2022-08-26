@@ -134,12 +134,14 @@ for (k = 0; k < 4; k++)
 if (format[(*i) + 1] == uoxX[k])
 break;
 }
-
 if (format[(*i) + 1] == uoxX[k])
 *i = check2(str, format, i, len);
 
 else if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
 *i = word(str, format, i, len);
+
+else if (format[(*i) + 1] == 'S')
+*i = check3(str, format, i, len);
 
 else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 *i = numbers(str, format, i, len);
