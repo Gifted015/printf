@@ -15,7 +15,7 @@ void *point;
 char low[] = "0123456789abcdef";
 
 point = va_arg(str, void *);
-add = point;
+add = (long int)point;
 
 for (x = add, a = 1; x > 0; x = (x / 16), a++)
 {
