@@ -15,6 +15,14 @@ void *point;
 char low[] = "0123456789abcdef";
 
 point = va_arg(str, void *);
+
+if (point == NULL)
+{
+null(len);
+}
+
+else
+{
 add = (long int)point;
 
 for (x = add, a = 1; x > 0; x = (x / 16), a++)
@@ -22,6 +30,7 @@ for (x = add, a = 1; x > 0; x = (x / 16), a++)
 bin = realloc(bin, (sizeof(long int) * (a + 1)));
 bin[a] = x % 16;
 }
+
 _putchar('0');
 _putchar('x');
 *len = (*len) + 2;
@@ -34,6 +43,7 @@ if (bin[x] == b)
 {
 _putchar(low[b]);
 *len = (*len) + 1;
+}
 }
 }
 }
