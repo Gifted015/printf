@@ -14,6 +14,7 @@ int binary(va_list str, int *i, int *len);
 int numbers(va_list str, const char *format, int *i, int *len);
 int word(va_list str, const char *format, int *i, int *len);
 void null(__attribute__((unused)) int *len);
+void nil(__attribute__((unused)) int *len);
 int _printf(char *format, ...);
 int _putchar(char c);
 void print_contd(long int n, int *len);
