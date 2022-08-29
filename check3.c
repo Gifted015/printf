@@ -1,6 +1,49 @@
 #include "main.h"
 
 /**
+ *pointer - handles specifiers (p)
+ *@str: list of variables to replace specifiers with
+ *@i: position of specifier indicator (%) in format
+ *@len: used in counting the number characters being printed
+ *Return: nothing
+ */
+
+int pointer(va_list str, int *i, int *len)
+{
+long int add, *bin = NULL, x, a, b;
+void *point;
+char low[] = "0123456789abcdef";
+
+point = va_arg(str, void *);
+add = point;
+
+for (x = add, a = 1; x > 0; x = (x / 16), a++)
+{
+bin = realloc(bin, (sizeof(long int) * (a + 1)));
+bin[a] = x % 16;
+}
+_putchar('0');
+_putchar('x');
+*len = (*len) + 2;
+
+for (x = a - 1; x >= 1; x--)
+{
+for (b = 0; low[b] != '\0'; b++)
+{
+if (bin[x] == b)
+{
+_putchar(low[b]);
+*len = (*len) + 1;
+}
+}
+}
+*i = (*i) + 1;
+
+return (*i);
+}
+
+
+/**
  *wordhex - handles specifiers (S)
  *@str: list of variables to replace specifiers with
  *@i: position of specifier indicator (%) in format
@@ -66,6 +109,9 @@ int check3(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == 'S')
 *i = wordhex(str, i, len);
+
+if (format[(*i) + 1] == 'p')
+*i = pointer(str, i, len);
 
 return (*i);
 }

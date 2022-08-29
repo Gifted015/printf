@@ -11,8 +11,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("Could you print some non-prntable characters?\n%S\nThanks!\n", "Sure:\x1F\x7F\n");
-	len2 = printf("Could you print some non-prntable characters?\nSure:\\x1F\\x7F\\x0A\nThanks!\n");
+	len = _printf("Can you print an address?\n%p\nNice!\n", (void *)0x7fff5100b6f8);
+	len2 = printf("Can you print an address?\n%p\nNice!\n", (void *)0x7fff5100b6f8);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

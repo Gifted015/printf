@@ -127,34 +127,28 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char uoxX[] = "uoxX";
+__attribute__((unused)) char first[] = "uoxX";
+__attribute__((unused)) char second[] = "csdib%";
+__attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
 for (k = 0; k < 4; k++)
 {
-if (format[(*i) + 1] == uoxX[k])
+if (format[(*i) + 1] == first[k])
+break;
+else if (format[(*i) + 1] == second[k])
+break;
+else if (format[(*i) + 1] == third[k])
 break;
 }
-if (format[(*i) + 1] == uoxX[k])
+
+if (format[(*i) + 1] == first[k])
 *i = check2(str, format, i, len);
 
-else if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
-*i = word(str, format, i, len);
+else if (format[(*i) + 1] == second[k])
+*i = checker(str, format, i, len);
 
-else if (format[(*i) + 1] == 'S')
+else if (format[(*i) + 1] == third[k])
 *i = check3(str, format, i, len);
-
-else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
-*i = numbers(str, format, i, len);
-
-else if (format[(*i) + 1] == 'b')
-*i = binary(str, i, len);
-
-else if (format[(*i) + 1] == '%')
-{
-_putchar(format[(*i)]);
-*i = (*i) + 1;
-*len = (*len) + 1;
-}
 
 else
 {
