@@ -24,7 +24,7 @@ add = (long int)point;
 if (add < 0)
 {
 for (x = 0; not[x] != '\0'; x++)
-_putchar(not[x]);
+_putchar(not[x]), *len = (*len) + 1;
 }
 else
 {
