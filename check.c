@@ -70,7 +70,7 @@ _putchar(' '), *len = (*len) + 1;
 *i = (*i) + 1;
 }
 
-if (format[(*i) + 1] == '+')
+else if (format[(*i) + 1] == '+')
 {
 if (num >= 0)
 {
