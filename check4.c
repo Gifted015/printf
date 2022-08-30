@@ -19,13 +19,15 @@ if (format[(*i) + 1] == '+')
 else if (format[(*i) + 1] == ' ')
 {
 _putchar(' ');
-*len = (*len) + 1;
 *i = (*i) + 1;
+*len = (*len) + 1;
+*i = check(str, format, i, len);
 }
 
 else if (format[(*i) + 1] == '#')
 {
 *i = (*i) + 1;
+*i = check(str, format, i, len);
 }
 
 return (*i);
