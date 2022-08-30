@@ -68,7 +68,6 @@ if (num >= 0)
 _putchar('+');
 *len = (*len) + 1;
 }
-
 *i = (*i) + 1;
 }
 
@@ -130,22 +129,23 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char first[] = "uoxX";
-__attribute__((unused)) char second[] = "+ #csdib%";
+__attribute__((unused)) char spec[] = "+ #", first[] = "uoxX";
+__attribute__((unused)) char second[] = "csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
-for (k = 0; k < 8; k++)
+for (k = 0; k < 5; k++)
 {
-if (format[(*i) + 1] == first[k])
+if (format[(*i) + 1] == first[k] || format[(*i) + 1] == spec[k])
 break;
 else if (format[(*i) + 1] == second[k])
 break;
 else if (format[(*i) + 1] == third[k])
 break;
 }
-check4(str, format, i, len);
+if (format[(*i) + 1] == spec[k])
+*i = check4(str, format, i, len);
 
-if (format[(*i) + 1] == first[k])
+else if (format[(*i) + 1] == first[k])
 *i = check2(str, format, i, len);
 
 else if (format[(*i) + 1] == second[k])

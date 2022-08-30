@@ -13,7 +13,7 @@ int check4(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == '+')
 {
-numbers(str, format, i, len);
+*i = numbers(str, format, i, len);
 }
 
 else if (format[(*i) + 1] == ' ')
