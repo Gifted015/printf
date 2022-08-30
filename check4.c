@@ -25,6 +25,8 @@ else if (format[(*i) + 1] == ' ')
 else if (format[(*i) + 1] == '#')
 {
 *i = (*i) + 1;
+_putchar('0');
+_putchar(format[(*i) + 1]);
 *i = check(str, format, i, len);
 }
 
