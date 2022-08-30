@@ -16,7 +16,7 @@ if (format[(*i) + 1] == '+')
 *i = numbers(str, format, i, len);
 }
 
-else if (format[(*i) + 1] == ' ')
+if (format[(*i) + 1] == ' ')
 {
 *i = (*i) + 1;
 *i = check(str, format, i, len);
