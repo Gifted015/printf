@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int check4(va_list str, const char *format, int *i, int *len);
 int check3(va_list str, const char *format, int *i, int *len);
 int check2(va_list str, const char *format, int *i, int *len);
 int check(va_list str, const char *format, int *i, int *len);

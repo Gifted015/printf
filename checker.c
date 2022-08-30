@@ -11,6 +11,8 @@
 
 int checker(va_list str, const char *format, int *i, int *len)
 {
+check4(str, format, i, len);
+
 if (format[(*i) + 1] == 'c' || format[(*i) + 1] == 's')
 *i = word(str, format, i, len);
 

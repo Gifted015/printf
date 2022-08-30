@@ -58,23 +58,23 @@ return (*i);
 
 int numbers(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) int in, dec;
+__attribute__((unused)) int num;
+num = va_arg(str, int);
 
-
-if (format[(*i) + 1] == 'd')
+if (format[(*i) + 1] == '+')
 {
-dec = va_arg(str, int);
-print_number(dec, len);
+if (num >= 0)
+_putchar('+');
+
 *i = (*i) + 1;
 }
 
-
-else if (format[(*i) + 1] == 'i')
+if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 {
-in = va_arg(str, int);
-print_number(in, len);
+print_number(num, len);
 *i = (*i) + 1;
 }
+
 return (*i);
 }
 
@@ -128,10 +128,10 @@ return (*i);
 int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char first[] = "uoxX";
-__attribute__((unused)) char second[] = "csdib%";
+__attribute__((unused)) char second[] = "+ #csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
-for (k = 0; k < 4; k++)
+for (k = 0; k < 8; k++)
 {
 if (format[(*i) + 1] == first[k])
 break;
