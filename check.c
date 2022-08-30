@@ -61,6 +61,15 @@ int numbers(va_list str, const char *format, int *i, int *len)
 __attribute__((unused)) int num;
 num = va_arg(str, int);
 
+if (format[(*i) - 1] == ' ')
+{
+if (num >= 0)
+{
+_putchar(' '), *len = (*len) + 1;
+}
+*i = (*i) + 1;
+}
+
 if (format[(*i) + 1] == '+')
 {
 if (num >= 0)
