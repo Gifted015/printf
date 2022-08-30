@@ -18,6 +18,8 @@ numbers(str, format, i, len);
 
 else if (format[(*i) + 1] == ' ')
 {
+_putchar(' ');
+*len = (*len) + 1;
 *i = (*i) + 1;
 }
 

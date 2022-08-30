@@ -64,7 +64,10 @@ num = va_arg(str, int);
 if (format[(*i) + 1] == '+')
 {
 if (num >= 0)
+{
 _putchar('+');
+*len = (*len) + 1;
+}
 
 *i = (*i) + 1;
 }
@@ -140,6 +143,7 @@ break;
 else if (format[(*i) + 1] == third[k])
 break;
 }
+check4(str, format, i, len);
 
 if (format[(*i) + 1] == first[k])
 *i = check2(str, format, i, len);
