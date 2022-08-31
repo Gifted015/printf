@@ -37,7 +37,7 @@ int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *
 unsigned int a, x, test, *bin = NULL;
 test = va_arg(str, int);
 
-if (format[(*i)] == '#')
+if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
@@ -80,7 +80,7 @@ __attribute__((unused)) char upp[] = "0123456789ABCDEF";
 test = va_arg(str, int);
 
 if (format[(*i)] == '#' && test != 0)
-_putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 1;
+_putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
