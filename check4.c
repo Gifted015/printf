@@ -16,7 +16,7 @@ if (format[(*i) + 1] == '+')
 *i = numbers(str, format, i, len);
 }
 
-if (format[(*i) + 1] == ' ')
+else if (format[(*i) + 1] == ' ')
 {
 *i = (*i) + 1;
 *i = check(str, format, i, len);
@@ -25,8 +25,6 @@ if (format[(*i) + 1] == ' ')
 else if (format[(*i) + 1] == '#')
 {
 *i = (*i) + 1;
-_putchar('0'), *len = (*len) + 1;
-_putchar(format[(*i) + 1]);
 *i = check(str, format, i, len);
 }
 

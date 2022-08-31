@@ -16,7 +16,7 @@ if (format[(*i) + 1] == 'u')
 *i = unsignint(str, i, len);
 
 if (format[(*i) + 1] == 'o')
-*i = octal(str, i, len);
+*i = octal(str, format, i, len);
 
 if (format[(*i) + 1] == 'x' || format[(*i) + 1] == 'X')
 *i = hexadec(str, format, i, len);

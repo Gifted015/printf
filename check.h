@@ -26,15 +26,19 @@ return (*i);
 /**
  *octal - handles octal specifiers
  *@str: list of variables to replace specifiers with
+ *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
  *Return: nothing
  */
 
-int octal(__attribute__((unused)) va_list str, int *i, int *len)
+int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
 {
 unsigned int a, x, test, *bin = NULL;
 test = va_arg(str, int);
+
+if (format[(*i)] == '#')
+_putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
 {
@@ -74,6 +78,9 @@ unsigned int a, b, x, test, *bin = NULL;
 __attribute__((unused)) char low[] = "0123456789abcdef";
 __attribute__((unused)) char upp[] = "0123456789ABCDEF";
 test = va_arg(str, int);
+
+if (format[(*i)] == '#' && test != 0)
+_putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 1;
 
 if (test == 0)
 {
