@@ -19,6 +19,8 @@ if (format[(*i) + 1] == '+')
 else if (format[(*i) + 1] == ' ')
 {
 *i = (*i) + 1;
+if (format[(*i) + 1] == '\0')
+*len = -1;
 *i = check(str, format, i, len);
 }
 
