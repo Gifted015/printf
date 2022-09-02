@@ -58,18 +58,27 @@ return (*i);
 
 int numbers(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) int num;
-num = va_arg(str, int);
+__attribute__((unused)) unsigned long int num;
+__attribute__((unused)) unsigned short int num2;
+__attribute__((unused)) int num3;
+if (format[(*i)] == 'l')
+num = va_arg(str, unsigned long int);
+if (format[(*i)] == 'h')
+num2 = va_arg(str, int);
+else
+num3 = va_arg(str, int);
 
+if (format[(*i)] != 'l' || format[(*i)] != 'h')
+{
 if (format[(*i)] == ' ')
 {
-if (num >= 0)
+if (num3 >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
 
 if (format[(*i) + 1] == '+')
 {
-if (num >= 0)
+if (num3 >= 0)
 {
 _putchar('+');
 *len = (*len) + 1;
@@ -77,6 +86,7 @@ _putchar('+');
 *i = (*i) + 1;
 if (format[(*i) + 1] == ' ')
 *i = (*i) + 1;
+}
 }
 
 if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
@@ -137,7 +147,7 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char spec[] = "+ #", first[] = "uoxX";
+__attribute__((unused)) char spec[] = "+ #lh", first[] = "uoxX";
 __attribute__((unused)) char second[] = "csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;

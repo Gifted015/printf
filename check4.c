@@ -30,5 +30,17 @@ else if (format[(*i) + 1] == '#')
 *i = check(str, format, i, len);
 }
 
+else if (format[(*i) + 1] == 'l')
+{
+*i = (*i) + 1;
+*i = check(str, format, i, len);
+}
+
+else if (format[(*i) + 1] == 'h')
+{
+*i = (*i) + 1;
+*i = check(str, format, i, len);
+}
+
 return (*i);
 }
