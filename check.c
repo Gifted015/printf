@@ -91,7 +91,12 @@ if (format[(*i) + 1] == ' ')
 
 if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 {
+if (format[(*i)] == 'l')
 print_number(num, len);
+else if (format[(*i)] == 'h')
+print_number(num2, len);
+else
+print_number(num3, len);
 *i = (*i) + 1;
 }
 
