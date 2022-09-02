@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *checker - handles specifiers (S)
+ *checker - handles specifiers (c, s, d, i, b and %)
  *@str: list of variables to replace specifiers with
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
@@ -22,7 +22,7 @@ else if (format[(*i) + 1] == 'b')
 
 else if (format[(*i) + 1] == '%')
 {
-_putchar(format[(*i)]);
+_putchar(format[(*i) + 1]);
 *i = (*i) + 1;
 *len = (*len) + 1;
 }
