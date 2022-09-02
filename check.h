@@ -14,9 +14,8 @@
 
 int unsignint(va_list str, int *i, int *len)
 {
-__attribute__((unused)) unsigned int x;
+__attribute__((unused)) unsigned long int x;
 
-x = va_arg(str, unsigned int);
 print_number(x, len);
 *i = (*i) + 1;
 return (*i);
@@ -34,8 +33,8 @@ return (*i);
 
 int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
 {
-unsigned int a, x, test, *bin = NULL;
-test = va_arg(str, int);
+unsigned long int a, x, *bin = NULL;
+__attribute__((unused)) unsigned long int test;
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
@@ -74,10 +73,10 @@ return (*i);
 
 int hexadec(va_list str, const char *format, int *i, int *len)
 {
-unsigned int a, b, x, test, *bin = NULL;
+unsigned long int a, b, x, *bin = NULL;
 __attribute__((unused)) char low[] = "0123456789abcdef";
 __attribute__((unused)) char upp[] = "0123456789ABCDEF";
-test = va_arg(str, int);
+__attribute__((unused)) unsigned long int test;
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
