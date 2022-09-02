@@ -62,9 +62,9 @@ __attribute__((unused)) unsigned long int num;
 __attribute__((unused)) unsigned short int num2;
 __attribute__((unused)) int num3;
 if (format[(*i)] == 'l')
-num = va_arg(str, unsigned long int);
-if (format[(*i)] == 'h')
-num2 = va_arg(str, int);
+num = va_arg(str, unsigned long int), *i = (*i) + 1;
+else if (format[(*i)] == 'h')
+num2 = va_arg(str, int), *i = (*i) + 1;
 else
 num3 = va_arg(str, int);
 
