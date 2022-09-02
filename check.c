@@ -75,6 +75,8 @@ _putchar('+');
 *len = (*len) + 1;
 }
 *i = (*i) + 1;
+if (format[(*i) + 1] == ' ')
+*i = (*i) + 1;
 }
 
 if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
