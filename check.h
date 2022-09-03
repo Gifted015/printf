@@ -81,7 +81,7 @@ __attribute__((unused)) char low[] = "0123456789abcdef";
 __attribute__((unused)) char upp[] = "0123456789ABCDEF";
 __attribute__((unused)) unsigned long int test;
 
-test = va_arg(str, int);
+test = va_arg(str, unsigned int);
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
