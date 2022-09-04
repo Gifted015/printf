@@ -148,7 +148,7 @@ _putchar((n % 10) + 49);
  *Return: nothing
  */
 
-void print_number(long int n, int *len)
+void print_number(long long int n, int *len)
 {
 end(n, len);
 if (n < 0 && n > -9223372036854775807)

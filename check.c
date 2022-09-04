@@ -114,7 +114,7 @@ return (*i);
 
 int binary(va_list str, int *i, int *len)
 {
-unsigned int a, x, test, *bin = NULL;
+unsigned long int a, x, test, *bin = NULL;
 test = va_arg(str, int);
 
 if (test == 0)
