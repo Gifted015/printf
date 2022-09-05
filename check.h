@@ -91,11 +91,14 @@ return (*i);
 
 int hexadec(va_list str, const char *format, int *i, int *len)
 {
-unsigned long int a, b, x, *bin = NULL;
+unsigned long int a, b, x, test;
 __attribute__((unused)) char low[] = "0123456789abcdef";
 __attribute__((unused)) char upp[] = "0123456789ABCDEF";
-__attribute__((unused)) unsigned long int test;
+int *bin = NULL;
 
+if (format[(*i)] == 'l')
+test = va_arg(str, unsigned long int);
+else
 test = va_arg(str, unsigned int);
 
 if (format[(*i)] == '#' && test != 0)
