@@ -59,26 +59,23 @@ return (*i);
 int numbers(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) unsigned long int num;
-__attribute__((unused)) unsigned short int num2;
-__attribute__((unused)) int num3;
+__attribute__((unused)) int numelse;
 if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
-else if (format[(*i)] == 'h')
-num2 = va_arg(str, int);
 else
-num3 = va_arg(str, int);
+numelse = va_arg(str, int);
 
 if (format[(*i)] != 'l' || format[(*i)] != 'h')
 {
 if (format[(*i)] == ' ')
 {
-if (num3 >= 0)
+if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
 
 if (format[(*i) + 1] == '+')
 {
-if (num3 >= 0)
+if (numelse >= 0)
 {
 _putchar('+');
 *len = (*len) + 1;
@@ -93,10 +90,8 @@ if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 {
 if (format[(*i)] == 'l')
 print_number(num, len);
-else if (format[(*i)] == 'h')
-print_number(num2, len);
 else
-print_number(num3, len);
+print_number(numelse, len);
 *i = (*i) + 1;
 }
 
