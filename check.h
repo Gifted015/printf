@@ -23,6 +23,8 @@ x = va_arg(str, unsigned int);
 
 if (format[(*i)] == 'l')
 {
+x = x1 / 10;
+if (x != '\0')
 print_number(x1 / 10, len);
 print_number(x1 % 10, len);
 }
