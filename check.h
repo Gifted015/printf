@@ -46,8 +46,12 @@ return (*i);
 
 int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
 {
-unsigned long int a, x, *bin = NULL, test;
+unsigned long int a, x, test;
+int *bin = NULL;
 
+if (format[(*i)] == 'l')
+test = va_arg(str, unsigned long int);
+else
 test = va_arg(str, int);
 
 if (format[(*i)] == '#' && test != 0)
