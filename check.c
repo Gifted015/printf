@@ -178,6 +178,9 @@ if (format[(*i) + 1] == '\0')
 *len = -1;
 else
 {
+if (format[(*i)] == 'l' || format[(*i)] == 'h')
+_putchar(format[(*i - 1)]);
+else
 _putchar(format[(*i)]);
 *len = (*len) + 1;
 }
