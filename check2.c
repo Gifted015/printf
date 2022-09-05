@@ -13,7 +13,7 @@
 int check2(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == 'u')
-*i = unsignint(str, i, len);
+*i = unsignint(str, format, i, len);
 
 if (format[(*i) + 1] == 'o')
 *i = octal(str, format, i, len);

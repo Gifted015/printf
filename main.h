@@ -18,6 +18,7 @@ void null(__attribute__((unused)) int *len);
 void nil(__attribute__((unused)) int *len);
 int _printf(char *format, ...);
 int _putchar(char c);
+void print5(unsigned long int n, int *len);
 void print_contd(unsigned long int n, int *len);
 void print_number(long int n, int *len);
 

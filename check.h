@@ -1,7 +1,7 @@
 #ifndef CHECK
 #define CHECK
 
-
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -12,12 +12,21 @@
  *Return: nothing
  */
 
-int unsignint(va_list str, int *i, int *len)
+int unsignint(va_list str, const char *format, int *i, int *len)
 {
-unsigned long int x;
-
+__attribute__((unused)) unsigned long int x;
+__attribute__((unused)) unsigned long int x1;
+if (format[(*i)] == 'l')
+x1 = va_arg(str, unsigned long int);
+else
 x = va_arg(str, unsigned int);
 
+if (format[(*i)] == 'l')
+{
+print_number(x1 / 10, len);
+print_number(x1 % 10, len);
+}
+else
 print_number(x, len);
 *i = (*i) + 1;
 return (*i);
