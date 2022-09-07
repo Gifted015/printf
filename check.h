@@ -114,6 +114,11 @@ test = va_arg(str, unsigned long int);
 else
 test = va_arg(str, unsigned int);
 
+if (format[(*i)] == '6')
+{
+width(test, len);
+}
+
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
