@@ -26,7 +26,7 @@ if (numelse < 0)
 y = 10000;
 }
 
-if (numelse < 1000000)
+if (numelse > 0 && numelse < 1000000)
 {
 for (x = numelse; x / y == 0; y = y/10)
 {
