@@ -120,7 +120,7 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 if (test == 0)
 {
 if (format[(*i)] == '6')
-width(test, 'x', len);
+width(test, 'n', len);
 print_number(0, len);
 }
 

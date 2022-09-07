@@ -21,9 +21,18 @@ _putchar(' ');
 }
 }
 
+else if (spec == 'c')
+{
+for (x = 1; x < 6; x++)
+{
+_putchar(' ');
+*len = (*len) + 1;
+}
+}
+
 else
 {
-if (numelse == 0 || spec == 'c')
+if (numelse == 0)
 {
 for (x = 1; x < 6; x++)
 {
