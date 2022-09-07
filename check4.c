@@ -12,9 +12,18 @@
 void width(int numelse, char spec, int *len)
 {
 int x, y = 100000;
-if (spec == 'x' || spec == 's')
+if (spec == 'x')
 {
 for (x = 0; x <= 6 - numelse; x++)
+{
+_putchar(' ');
+*len = (*len) + 1;
+}
+}
+
+else if (spec == 's')
+{
+for (x = 1; x <= 6 - numelse; x++)
 {
 _putchar(' ');
 *len = (*len) + 1;
@@ -71,6 +80,15 @@ int check4(va_list str, const char *format, int *i, int *len)
 if (format[(*i) + 1] == '+')
 {
 *i = numbers(str, format, i, len);
+}
+
+else if (format[(*i) + 1] == '*')
+{
+*i = (*i) + 1;
+va_arg(str, int);
+if (format[(*i) + 1] == '\0')
+*len = -1;
+*i = check(str, format, i, len);
 }
 
 else if (format[(*i) + 1] == ' ' || format[(*i) + 1] == '6')

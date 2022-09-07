@@ -21,7 +21,7 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 if (format[(*i)] == 'l')
 width(x1, 'o', len);
@@ -62,7 +62,7 @@ test = va_arg(str, unsigned long int);
 else
 test = va_arg(str, int);
 
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(test, 'o', len);
 }
@@ -119,7 +119,7 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 width(test, 'n', len);
 print_number(0, len);
 }
@@ -132,7 +132,7 @@ bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 16;
 }
 
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 width(a, 'x', len);
 
 for (x = a - 1; x >= 1; x--)

@@ -18,7 +18,7 @@ __attribute__((unused)) char *words, chr;
 if (format[(*i) + 1] == 'c')
 {
 chr = va_arg(str, int);
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 width(1, 'c', len);
 _putchar(chr);
 *len = (*len) + 1;
@@ -39,7 +39,7 @@ else
 {
 for (x = 0; words[x] != '\0'; x++)
 { }
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 width(x, 's', len);
 for (x = 0; words[x] != '\0'; x++)
 {
@@ -79,7 +79,7 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
-if (format[(*i)] == '6')
+if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(numelse, 'n', len);
 }
@@ -154,7 +154,7 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char spec[] = "+ #lh6", first[] = "uoxX";
+__attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
 __attribute__((unused)) char second[] = "csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
