@@ -59,7 +59,7 @@ return (*i);
 int numbers(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) unsigned long int num;
-__attribute__((unused)) int numelse, x;
+__attribute__((unused)) int numelse, x, y;
 if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
 else
@@ -74,8 +74,11 @@ _putchar(' '), *len = (*len) + 1;
 }
 if (format[(*i)] == '6')
 {
-if (numelse >= 0 && numelse < 1000000)
-for (x = 0; x < 5; x++)
+if (numelse == 0)
+for (x = 1; x < 6; x++)
+_putchar(' '), *len = (*len) + 1;
+else if (numelse > 0 && numelse < 1000000)
+for (x = numelse, y = 100000; x / y == 0; y = y/10)
 _putchar(' '), *len = (*len) + 1;
 }
 if (format[(*i) + 1] == '+')
