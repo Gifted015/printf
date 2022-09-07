@@ -158,7 +158,7 @@ __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
 __attribute__((unused)) char second[] = "csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
-for (k = 0; k < 5; k++)
+for (k = 0; k < 6; k++)
 {
 if (format[(*i) + 1] == first[k] || format[(*i) + 1] == spec[k])
 break;
