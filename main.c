@@ -12,11 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-        len = _printf("%h\n");
-	len2 = printf("%h\n");
-	printf("len: %d\tlen2: %d\n", len, len2);
-        len = _printf("\n%l\n");
-	len2 = printf("%l\n");
+        len = _printf("%6d", 102498402);
+	len2 = printf("%6d", 102498402);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

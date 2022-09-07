@@ -147,7 +147,7 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char spec[] = "+ #lh", first[] = "uoxX";
+__attribute__((unused)) char spec[] = "+ #lh6", first[] = "uoxX";
 __attribute__((unused)) char second[] = "csdib%";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
