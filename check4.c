@@ -4,15 +4,26 @@
 /**
  *width - handles the field width for non-custom conversion specifiers
  *@numelse: number being printed
+ *@spec: conversion specifiers indicator
  *@len: used in counting the number of characters being printed
  *Return: nothing
  */
 
-void width(int numelse, int *len)
+void width(int numelse, char spec, int *len)
 {
 int x, y = 100000;
+if (spec == 'x' || spec == 's')
+{
+for (x = 0; x <= 6 - numelse; x++)
+{
+_putchar(' ');
+*len = (*len) + 1;
+}
+}
 
-if (numelse == 0)
+else
+{
+if (numelse == 0 || spec == 'c')
 {
 for (x = 1; x < 6; x++)
 {
@@ -31,6 +42,7 @@ if (numelse != 0 && numelse < 1000000)
 for (x = numelse; x / y == 0; y = y/10)
 {
 _putchar(' '), *len = (*len) + 1;
+}
 }
 }
 }
