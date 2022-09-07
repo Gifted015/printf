@@ -1,5 +1,41 @@
 #include "main.h"
 
+
+/**
+ *width - handles the field width for non-custom conversion specifiers
+ *@numelse: number being printed
+ *@len: used in counting the number of characters being printed
+ *Return: nothing
+ */
+
+void width(int numelse, int *len)
+{
+int x, y = 100000;
+
+if (numelse == 0)
+{
+for (x = 1; x < 6; x++)
+{
+_putchar(' ');
+*len = (*len) + 1;
+}
+}
+
+if (numelse < 0)
+{
+y = 10000;
+}
+
+if (numelse < 1000000)
+{
+for (x = numelse; x / y == 0; y = y/10)
+{
+_putchar(' '), *len = (*len) + 1;
+}
+}
+}
+
+
 /**
  *check4 - handles non-custom specifiers ('+', ' ' & '#')
  *@str: list of variables to replace specifiers with

@@ -21,6 +21,14 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
+if (format[(*i)] == '6')
+{
+if (format[(*i)] == 'l')
+width(x1, len);
+else
+width(x , len);
+}
+
 if (format[(*i)] == 'l')
 {
 x = x1 / 10;
@@ -53,6 +61,11 @@ if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);
 else
 test = va_arg(str, int);
+
+if (format[(*i)] == '6')
+{
+width(test, len);
+}
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
