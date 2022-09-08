@@ -6,7 +6,7 @@
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int word(va_list str, const char *format, int *i, int *len)
@@ -20,6 +20,8 @@ if (format[(*i) + 1] == 'c')
 chr = va_arg(str, int);
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(1, 'c', len);
+if (format[(*i)] == '.')
+prec(1, 'c', len);
 _putchar(chr);
 *len = (*len) + 1;
 *i = (*i) + 1;
@@ -39,6 +41,8 @@ else
 {
 for (x = 0; words[x] != '\0'; x++)
 { }
+if (format[(*i)] == '.')
+prec(x, 'c', len);
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(x, 's', len);
 for (x = 0; words[x] != '\0'; x++)
@@ -59,7 +63,7 @@ return (*i);
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int numbers(va_list str, const char *format, int *i, int *len)
@@ -79,6 +83,8 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
+if (format[(*i)] == '.')
+prec(numelse, 'c', len);
 if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(numelse, 'n', len);
@@ -111,7 +117,7 @@ return (*i);
  *@str: list of variables to replace specifiers with
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int binary(va_list str, int *i, int *len)
@@ -149,26 +155,29 @@ return (*i);
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
-__attribute__((unused)) char second[] = "csdib%";
+ __attribute__((unused)) char second[] = "csdib%", last[] = ".";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)
 {
 if (format[(*i) + 1] == first[k] || format[(*i) + 1] == spec[k])
 break;
-else if (format[(*i) + 1] == second[k])
+else if (format[(*i) + 1] == second[k] || formart[(*i) + 1] == last[k])
 break;
 else if (format[(*i) + 1] == third[k])
 break;
 }
 if (format[(*i) + 1] == spec[k])
 *i = check4(str, format, i, len);
+
+else if (format[(*i) + 1] == last[k])
+*i = check5(str, format, i, len);
 
 else if (format[(*i) + 1] == first[k])
 *i = check2(str, format, i, len);

@@ -6,7 +6,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void prec(int numelse, char spec, int *len);
 void width(int numelse, char spec, int *len);
+int check5(va_list str, const char *format, int *i, int *len);
 int check4(va_list str, const char *format, int *i, int *len);
 int check3(va_list str, const char *format, int *i, int *len);
 int check2(va_list str, const char *format, int *i, int *len);

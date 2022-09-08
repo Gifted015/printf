@@ -9,7 +9,7 @@
  *@str: list of variables to replace specifiers with
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int unsignint(va_list str, const char *format, int *i, int *len)
@@ -20,6 +20,14 @@ if (format[(*i)] == 'l')
 x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
+
+if (format[(*i)] == '.')
+{
+if (format[(*i)] == 'l')
+prec(x1, 'o', len);
+else
+prec(x, 'o',  len);
+}
 
 if (format[(*i)] == '6' || format[(*i)] == '*')
 {
@@ -49,7 +57,7 @@ return (*i);
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
@@ -62,10 +70,11 @@ test = va_arg(str, unsigned long int);
 else
 test = va_arg(str, int);
 
+if (format[(*i)] == '.')
+prec(test, 'o', len);
+
 if (format[(*i)] == '6' || format[(*i)] == '*')
-{
 width(test, 'o', len);
-}
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
@@ -99,7 +108,7 @@ return (*i);
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
- *Return: nothing
+ *Return: i
  */
 
 int hexadec(va_list str, const char *format, int *i, int *len)
@@ -121,6 +130,8 @@ if (test == 0)
 {
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(test, 'n', len);
+if (format[(*i)] == '.')
+prec(test, 'n', len);
 print_number(0, len);
 }
 
@@ -131,6 +142,9 @@ for (x = test, a = 1; x > 0; x = (x / 16), a++)
 bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 16;
 }
+
+if (format[(*i)] == '.')
+prec(a, 'x', len);
 
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(a, 'x', len);
