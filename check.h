@@ -29,7 +29,7 @@ else
 prec(x, 'o',  len);
 }
 
-if (format[(*i)] == '6' || format[(*i)] == '*')
+else if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 if (format[(*i)] == 'l')
 width(x1, 'o', len);
@@ -73,10 +73,10 @@ test = va_arg(str, int);
 if (format[(*i) - 1] == '.')
 prec(test, 'o', len);
 
-if (format[(*i)] == '6' || format[(*i)] == '*')
+else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(test, 'o', len);
 
-if (format[(*i)] == '#' && test != 0)
+else if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
@@ -128,10 +128,10 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
-if (format[(*i)] == '6' || format[(*i)] == '*')
-width(test, 'n', len);
 if (format[(*i) - 1] == '.')
 prec(test, 'n', len);
+else if (format[(*i)] == '6' || format[(*i)] == '*')
+width(test, 'n', len);
 print_number(0, len);
 }
 
@@ -146,7 +146,7 @@ bin[a] = x % 16;
 if (format[(*i) - 1] == '.')
 prec(a, 'x', len);
 
-if (format[(*i)] == '6' || format[(*i)] == '*')
+else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(a, 'x', len);
 
 for (x = a - 1; x >= 1; x--)
