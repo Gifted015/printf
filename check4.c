@@ -144,7 +144,7 @@ int check5(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == '.')
 {
-*i = (*i) + 1;
+*i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
 *len = -1;
 *i = check(str, format, i, len);

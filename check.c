@@ -20,7 +20,7 @@ if (format[(*i) + 1] == 'c')
 chr = va_arg(str, int);
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(1, 'c', len);
-if (format[(*i)] == '.')
+if (format[(*i) - 1] == '.')
 prec(1, 'c', len);
 _putchar(chr);
 *len = (*len) + 1;
@@ -41,8 +41,8 @@ else
 {
 for (x = 0; words[x] != '\0'; x++)
 { }
-if (format[(*i)] == '.')
-prec(x, 'c', len);
+if (format[(*i) - 1] == '.')
+prec(x, 's', len);
 if (format[(*i)] == '6' || format[(*i)] == '*')
 width(x, 's', len);
 for (x = 0; words[x] != '\0'; x++)
@@ -83,9 +83,9 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
-if (format[(*i)] == '.')
-prec(numelse, 'c', len);
-if (format[(*i)] == '6' || format[(*i)] == '*')
+else if (format[(*i) - 1] == '.')
+prec(numelse, 'n', len);
+else if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(numelse, 'n', len);
 }
@@ -166,18 +166,18 @@ __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)
 {
-if (format[(*i) + 1] == first[k] || format[(*i) + 1] == spec[k])
+if (format[(*i) + 1] == first[k] || format[(*i) + 1] == last[k])
 break;
-else if (format[(*i) + 1] == second[k] || format[(*i) + 1] == last[k])
+else if (format[(*i) + 1] == second[k] || format[(*i) + 1] == spec[k])
 break;
 else if (format[(*i) + 1] == third[k])
 break;
 }
-if (format[(*i) + 1] == spec[k])
-*i = check4(str, format, i, len);
-
-else if (format[(*i) + 1] == last[k])
+if (format[(*i) + 1] == last[k])
 *i = check5(str, format, i, len);
+
+else if (format[(*i) + 1] == spec[k])
+*i = check4(str, format, i, len);
 
 else if (format[(*i) + 1] == first[k])
 *i = check2(str, format, i, len);
