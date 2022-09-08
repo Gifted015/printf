@@ -168,7 +168,7 @@ for (k = 0; k < 6; k++)
 {
 if (format[(*i) + 1] == first[k] || format[(*i) + 1] == spec[k])
 break;
-else if (format[(*i) + 1] == second[k] || formart[(*i) + 1] == last[k])
+else if (format[(*i) + 1] == second[k] || format[(*i) + 1] == last[k])
 break;
 else if (format[(*i) + 1] == third[k])
 break;
