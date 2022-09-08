@@ -9,7 +9,7 @@
  *Return: i
  */
 
-void prec(int numelse, char spec, int *len)
+int prec(int numelse, char spec, int *len)
 {
 int x, y = 100000;
 if (spec == 'x')
@@ -52,6 +52,7 @@ _putchar('0');
 
 if (numelse < 0)
 {
+_putchar('-');
 y = 10000;
 }
 
@@ -63,6 +64,10 @@ _putchar('0'), *len = (*len) + 1;
 }
 }
 }
+if (numelse < 0)
+return (-numelse);
+else
+return (numelse);
 }
 
 

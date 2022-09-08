@@ -84,7 +84,7 @@ if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
 else if (format[(*i) - 1] == '.')
-prec(numelse, 'n', len);
+numelse = prec(numelse, 'n', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(numelse, 'n', len);
