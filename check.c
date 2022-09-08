@@ -50,6 +50,8 @@ for (x = 0; x < y; x++)
 _putchar(words[x]);
 *len = (*len) + 1;
 }
+if (format[(*i) - 1] == '.')
+_putchar('\n');
 }
 *i = (*i) + 1;
 }
