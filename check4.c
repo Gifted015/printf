@@ -146,13 +146,15 @@ _putchar(' '), *len = (*len) + 1;
 
 int check5(va_list str, const char *format, int *i, int *len)
 {
-if (format[(*i) + 1] == '.')
+if (format[(*i) + 1] == '.' && format[(*i) + 2] == '6')
 {
 *i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
 *len = -1;
 *i = check(str, format, i, len);
 }
+else
+*i = (*i) + 3;
 return (*i);
 }
 
