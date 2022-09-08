@@ -11,17 +11,17 @@
 
 int word(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) int x;
+__attribute__((unused)) int x, y;
 __attribute__((unused)) char *words, chr;
 
 
 if (format[(*i) + 1] == 'c')
 {
 chr = va_arg(str, int);
-if (format[(*i)] == '6' || format[(*i)] == '*')
-width(1, 'c', len);
 if (format[(*i) - 1] == '.')
 prec(1, 'c', len);
+else if (format[(*i)] == '6' || format[(*i)] == '*')
+width(1, 'c', len);
 _putchar(chr);
 *len = (*len) + 1;
 *i = (*i) + 1;
@@ -39,13 +39,13 @@ null(len);
 
 else
 {
-for (x = 0; words[x] != '\0'; x++)
+for (y = 0; words[y] != '\0'; y++)
 { }
 if (format[(*i) - 1] == '.')
-prec(x, 's', len);
-if (format[(*i)] == '6' || format[(*i)] == '*')
-width(x, 's', len);
-for (x = 0; words[x] != '\0'; x++)
+y = 6;
+else if (format[(*i)] == '6' || format[(*i)] == '*')
+width(y, 's', len);
+for (x = 0; x < y; x++)
 {
 _putchar(words[x]);
 *len = (*len) + 1;

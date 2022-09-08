@@ -11,9 +11,9 @@
 int main(void)
 {
 	int len, len2;
-	len = _printf("%.i", 0);
-	len2 = printf("%.i", 0);
-        printf("len: %d\tlen2: %d\n", len, len2);
+	len = _printf("%s", "Best School !\n");
+	len2 = printf("%s", "Best School !\n");
+	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
 	{
