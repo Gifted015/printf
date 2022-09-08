@@ -52,8 +52,7 @@ _putchar('0');
 
 if (numelse < 0)
 {
-_putchar('-');
-y = 10000;
+_putchar('-'), *len = (*len) + 1;
 }
 
 if (numelse != 0 && numelse < 1000000)
