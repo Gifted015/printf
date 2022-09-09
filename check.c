@@ -18,7 +18,7 @@ __attribute__((unused)) char *words, chr;
 if (format[(*i) + 1] == 'c')
 {
 chr = va_arg(str, int);
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(1, 'c', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(1, 'c', len);
@@ -41,7 +41,7 @@ else
 {
 for (y = 0; words[y] != '\0'; y++)
 { }
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 y = prec(y, 's', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(y, 's', len);
@@ -83,7 +83,7 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
-else if (format[(*i) - 1] == '.')
+else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 numelse = prec(numelse, 'n', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 {
@@ -161,7 +161,7 @@ return (*i);
 int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
- __attribute__((unused)) char second[] = "csdib%", last[] = ".";
+ __attribute__((unused)) char second[] = "csdib%", last[] = ".0";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)

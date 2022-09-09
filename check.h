@@ -21,7 +21,7 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == 'l')
 prec(x1, 'o', len);
@@ -70,7 +70,7 @@ test = va_arg(str, unsigned long int);
 else
 test = va_arg(str, int);
 
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(test, 'o', len);
 
 else if (format[(*i)] == '6' || format[(*i)] == '*')
@@ -128,7 +128,7 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(test, 'n', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(test, 'n', len);
