@@ -42,7 +42,7 @@ else
 for (y = 0; words[y] != '\0'; y++)
 { }
 if (format[(*i) - 1] == '.')
-y = 6;
+y = prec(y, 's', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 width(y, 's', len);
 for (x = 0; x < y; x++)

@@ -23,11 +23,8 @@ _putchar('0');
 
 else if (spec == 's')
 {
-for (x = 1; x <= 6 - numelse; x++)
-{
-_putchar('0');
-*len = (*len) + 1;
-}
+if (numelse > 6)
+numelse = 6;
 }
 
 else if (spec == 'c')
@@ -146,7 +143,7 @@ _putchar(' '), *len = (*len) + 1;
 
 int check5(va_list str, const char *format, int *i, int *len)
 {
-if (format[(*i) + 1] == '.' && format[(*i) + 2] == '6')
+if (format[(*i) + 1] == '.' && (format[(*i) + 2] == '6' || format[(*i) + 2] == '*'))
 {
 *i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
