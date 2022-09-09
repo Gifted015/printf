@@ -143,7 +143,7 @@ _putchar(' '), *len = (*len) + 1;
 
 int check5(va_list str, const char *format, int *i, int *len)
 {
-int test;
+int test = 6;
 if (format[(*i) + 1] == '.' && (format[(*i) + 2] == '6' || format[(*i) + 2] == '*'))
 {
 if (format[(*i) + 2] == '*')
@@ -154,7 +154,8 @@ if (test == 0)
 *i = (*i) + 3;
 }
 }
-else
+
+if (test != 0)
 {
 *i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
@@ -162,10 +163,13 @@ if (format[(*i) + 1] == '\0')
 *i = check(str, format, i, len);
 }
 }
+
 else if (format[(*i) + 2] == '0')
 *i = (*i) + 3;
+
 else
 *i = (*i) + 2;
+
 return (*i);
 }
 
