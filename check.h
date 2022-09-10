@@ -97,7 +97,7 @@ bin[a] = x % 8;
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(a, 'x', len);
 
-else if ((format[(*i)] == '6' || format[(*i)] == '*') && format[(*i) - 1 != '-')
+else if ((format[(*i)] == '6' || format[(*i)] == '*') && format[(*i) - 1] != '-')
 width(a, 'x', len);
 
 for (x = a - 1; x >= 1; x--)
@@ -159,7 +159,7 @@ bin[a] = x % 16;
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(a, 'x', len);
 
-else if ((format[(*i)] == '6' || format[(*i)] == '*') && format[(*i) - 1 != '-')
+else if ((format[(*i)] == '6' || format[(*i)] == '*') && format[(*i) - 1] != '-')
 width(a, 'x', len);
 
 for (x = a - 1; x >= 1; x--)
@@ -180,7 +180,7 @@ if (bin[x] == b)
 {
 _putchar(upp[b]);
  *len = (*len) + 1; } } } }
-else if (format[(*i) - 1] == '-')
+if (format[(*i) - 1] == '-')
 width(a, '-', len);
 }
 *i = (*i) + 1;
