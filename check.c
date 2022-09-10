@@ -87,10 +87,10 @@ else if (format[(*i) - 1] == '.')
 numelse = prec(numelse, 'n', len);
 else if (format[(*i) - 1] == '0')
 numelse = prec(numelse, '0', len);
+else if (format[(*i) - 1] == '-')
+width(numelse, '-', len), *i = (*i) + 1;
 else if (format[(*i)] == '6' || format[(*i)] == '*')
-{
 width(numelse, 'n', len);
-}
 if (format[(*i) + 1] == '+')
 {
 if (numelse >= 0)
@@ -163,7 +163,7 @@ return (*i);
 int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
- __attribute__((unused)) char second[] = "csdib%", last[] = ".0";
+ __attribute__((unused)) char second[] = "csdib%", last[] = ".0-";
 __attribute__((unused)) char third[] = "Sp";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)
