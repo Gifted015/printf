@@ -143,7 +143,7 @@ bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 16;
 }
 
-if (format[(*i) - 1] == '.')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(a, 'x', len);
 
 else if (format[(*i)] == '6' || format[(*i)] == '*')

@@ -83,8 +83,10 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
-else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+else if (format[(*i) - 1] == '.')
 numelse = prec(numelse, 'n', len);
+else if (format[(*i) - 1] == '0')
+numelse = prec(numelse, '0', len);
 else if (format[(*i)] == '6' || format[(*i)] == '*')
 {
 width(numelse, 'n', len);

@@ -11,8 +11,8 @@
 int main(void)
 {
 	int len, len2;
-	len = _printf("%06s", "Best School !\n");
-	len2 = printf("%06s", "Best School !\n");
+	len = _printf("%06d", -1024);
+	len2 = printf("%06d", -1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

@@ -50,7 +50,10 @@ _putchar('0');
 if (numelse < 0)
 {
 _putchar('-'), *len = (*len) + 1;
+if (spec == '0')
+y = 10000;
 }
+
 
 if (numelse != 0 && numelse < 1000000)
 {
