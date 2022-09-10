@@ -84,6 +84,9 @@ _putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
 {
+if (format[(*i) - 1] == '-')
+width(test, '-', len);
+else
 print_number(0, len);
 }
 
@@ -182,7 +185,7 @@ if (bin[x] == b)
 _putchar(upp[b]);
  *len = (*len) + 1; } } } }
 if (format[(*i) - 1] == '-')
-width(a, '-', len);
+width(a, 'x', len);
 }
 *i = (*i) + 1;
 return (*i);
