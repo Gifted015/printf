@@ -35,6 +35,7 @@ if (format[(*i)] == 'l')
 width(x1, '-', len), *i = (*i) + 1;
 else
 width(x, '-', len), *i = (*i) + 1;
+return (*i);
 }
 
 else if (format[(*i)] == '6' || format[(*i)] == '*')
