@@ -11,8 +11,8 @@
 int main(void)
 {
 	int len, len2;
-	len = _printf("%r", "\nThis sentence is retrieved from va_args!");
-	len2 = printf("!sgra_av morf deveirter si ecnetnes sihT\n");
+	len = _printf("%R", "Guvf fragrapr vf ergevrirq sebz in_netf!\n");
+	len2 = printf("This sentence is retrieved from va_args!\n");
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

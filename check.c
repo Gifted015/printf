@@ -164,7 +164,7 @@ int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
  __attribute__((unused)) char second[] = "csdib%", last[] = ".0-";
-__attribute__((unused)) char third[] = "Sp", final[] = "r";
+__attribute__((unused)) char third[] = "Sp", final[] = "rR";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)
 {
