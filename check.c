@@ -164,7 +164,7 @@ int check(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
  __attribute__((unused)) char second[] = "csdib%", last[] = ".0-";
-__attribute__((unused)) char third[] = "Sp";
+__attribute__((unused)) char third[] = "Sp", final[] = "r";
 __attribute__((unused)) int k;
 for (k = 0; k < 6; k++)
 {
@@ -172,10 +172,13 @@ if (format[(*i) + 1] == first[k] || format[(*i) + 1] == last[k])
 break;
 else if (format[(*i) + 1] == second[k] || format[(*i) + 1] == spec[k])
 break;
-else if (format[(*i) + 1] == third[k])
+else if (format[(*i) + 1] == third[k] || format[(*i) + 1] == final[k])
 break;
 }
-if (format[(*i) + 1] == last[k])
+if (format[(*i) + 1] == final[k])
+*i = check6(str, format, i, len);
+
+else if (format[(*i) + 1] == last[k])
 *i = check5(str, format, i, len);
 
 else if (format[(*i) + 1] == spec[k])
