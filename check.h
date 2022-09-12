@@ -71,13 +71,13 @@ return (*i);
 
 int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
 {
-unsigned long int a, x, test;
+__attribute__((unused)) unsigned long int a, x, test;
 int *bin = NULL;
 
 if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);
 else
-test = va_arg(str, int);
+test = va_arg(str, long int);
 
 if (format[(*i)] == '#' && test != 0)
 _putchar('0'), *len = (*len) + 1;
