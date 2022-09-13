@@ -12,7 +12,7 @@
 
 int prec(int numelse, char spec, int *len, int count)
 {
-int x, y = pow(10, (count - 1));
+int x, y = _pow(10, (count - 1));
 if (spec == 'x')
 {
 for (x = 0; x <= count - numelse; x++)
@@ -52,7 +52,7 @@ if (numelse < 0)
 {
 _putchar('-'), *len = (*len) + 1;
 if (spec == '0')
-y = pow(10, (count - 2));
+y = _pow(10, (count - 2));
 }
 
 
@@ -82,7 +82,7 @@ return (numelse);
 
 void width(int numelse, char spec, int *len, int count)
 {
-int x, y = pow(10, (count - 1));
+int x, y = _pow(10, (count - 1));
 if (spec == 'x')
 {
 for (x = 0; x <= count - numelse; x++)
@@ -126,7 +126,7 @@ _putchar(' ');
 
 if (numelse < 0)
 {
-y = pow(10, (count - 2));
+y = _pow(10, (count - 2));
 }
 
 if (numelse != 0 && numelse < 1000000)
