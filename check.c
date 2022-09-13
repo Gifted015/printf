@@ -22,7 +22,7 @@ if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(1, 'c', len, atoi(&(format[(*i)])));
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(1, 'c', len, atoi(&(format[(*i)])) + 10);
-else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
 width(1, 'c', len, atoi(&(format[(*i)])));
 _putchar(chr);
 *len = (*len) + 1;
@@ -47,7 +47,7 @@ if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 y = prec(y, 's', len, atoi(&(format[(*i)])));
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(y, 's', len, atoi(&(format[(*i)])) + 10);
-else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
 width(y, 's', len, atoi(&(format[(*i)])));
 for (x = 0; x < y; x++)
 {
@@ -95,7 +95,7 @@ else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(numelse, 'n', len, atoi(&(format[(*i)])) + 10);
-else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
 width(numelse, 'n', len, atoi(&(format[(*i)])));
 if (format[(*i) + 1] == '+')
 {
