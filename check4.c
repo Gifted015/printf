@@ -6,15 +6,16 @@
  *@numelse: number being printed
  *@spec: conversion specifiers indicator
  *@len: used in counting the number of characters being printed
+ *@count: number of zeros to be added
  *Return: i
  */
 
-int prec(int numelse, char spec, int *len)
+int prec(int numelse, char spec, int *len, int count)
 {
-int x, y = 100000;
+int x, y = pow(10, (count - 1));
 if (spec == 'x')
 {
-for (x = 0; x <= 6 - numelse; x++)
+for (x = 0; x <= count - numelse; x++)
 {
 _putchar('0');
 *len = (*len) + 1;
@@ -23,13 +24,13 @@ _putchar('0');
 
 else if (spec == 's')
 {
-if (numelse > 6)
-numelse = 6;
+if (numelse > count)
+numelse = count;
 }
 
 else if (spec == 'c')
 {
-for (x = 1; x < 6; x++)
+for (x = 1; x < count; x++)
 {
 _putchar('0');
 *len = (*len) + 1;
@@ -40,7 +41,7 @@ else
 {
 if (numelse == 0)
 {
-for (x = 1; x < 6; x++)
+for (x = 1; x < count; x++)
 {
 _putchar('0');
 *len = (*len) + 1;
@@ -51,7 +52,7 @@ if (numelse < 0)
 {
 _putchar('-'), *len = (*len) + 1;
 if (spec == '0')
-y = 10000;
+y = pow(10, (count - 2));
 }
 
 
@@ -75,15 +76,16 @@ return (numelse);
  *@numelse: number being printed
  *@spec: conversion specifiers indicator
  *@len: used in counting the number of characters being printed
+ *@count: number of spaces to be added
  *Return: i
  */
 
-void width(int numelse, char spec, int *len)
+void width(int numelse, char spec, int *len, int count)
 {
-int x, y = 100000;
+int x, y = pow(10, (count - 1));
 if (spec == 'x')
 {
-for (x = 0; x <= 6 - numelse; x++)
+for (x = 0; x <= count - numelse; x++)
 {
 _putchar(' ');
 *len = (*len) + 1;
@@ -92,7 +94,7 @@ _putchar(' ');
 
 else if (spec == 's')
 {
-for (x = 1; x <= 6 - numelse; x++)
+for (x = 1; x <= count - numelse; x++)
 {
 _putchar(' ');
 *len = (*len) + 1;
@@ -101,7 +103,7 @@ _putchar(' ');
 
 else if (spec == 'c')
 {
-for (x = 1; x < 6; x++)
+for (x = 1; x < count; x++)
 {
 _putchar(' ');
 *len = (*len) + 1;
@@ -115,7 +117,7 @@ print_number(numelse, len);
 
 if (numelse == 0)
 {
-for (x = 1; x < 6; x++)
+for (x = 1; x < count; x++)
 {
 _putchar(' ');
 *len = (*len) + 1;
@@ -124,7 +126,7 @@ _putchar(' ');
 
 if (numelse < 0)
 {
-y = 10000;
+y = pow(10, (count - 2));
 }
 
 if (numelse != 0 && numelse < 1000000)
@@ -150,7 +152,7 @@ _putchar(' '), *len = (*len) + 1;
 int check5(va_list str, const char *format, int *i, int *len)
 {
 int test = 6;
-if (format[(*i) + 2] == '6' || format[(*i) + 2] == '*')
+if (atoi(&(format[(*i) + 2])) <= 6 || format[(*i) + 2] == '*')
 {
 if (format[(*i) + 2] == '*')
 {
@@ -204,8 +206,11 @@ if (format[(*i) + 1] == '\0')
 *i = check(str, format, i, len);
 }
 
-else if (format[(*i) + 1] == ' ' || format[(*i) + 1] == '6')
+else if (format[(*i) + 1] == ' ' || (format[(*i) + 1] > 48 && format[(*i) + 1] < 58))
 {
+if (format[(*i + 2)] > 48 && format[(*i) + 2] < 58)
+*i = (*i) + 2;
+else
 *i = (*i) + 1;
 if (format[(*i) + 1] == '\0')
 *len = -1;

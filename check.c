@@ -19,9 +19,11 @@ if (format[(*i) + 1] == 'c')
 {
 chr = va_arg(str, int);
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
-prec(1, 'c', len);
-else if (format[(*i)] == '6' || format[(*i)] == '*')
-width(1, 'c', len);
+prec(1, 'c', len, atoi(&(format[(*i)])));
+else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+width(1, 'c', len, atoi(&(format[(*i)])) + 10);
+else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+width(1, 'c', len, atoi(&(format[(*i)])));
 _putchar(chr);
 *len = (*len) + 1;
 *i = (*i) + 1;
@@ -42,9 +44,11 @@ else
 for (y = 0; words[y] != '\0'; y++)
 { }
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
-y = prec(y, 's', len);
-else if (format[(*i)] == '6' || format[(*i)] == '*')
-width(y, 's', len);
+y = prec(y, 's', len, atoi(&(format[(*i)])));
+else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+width(y, 's', len, atoi(&(format[(*i)])) + 10);
+else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+width(y, 's', len, atoi(&(format[(*i)])));
 for (x = 0; x < y; x++)
 {
 _putchar(words[x]);
@@ -84,13 +88,15 @@ if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
 else if (format[(*i) - 1] == '.')
-numelse = prec(numelse, 'n', len);
+numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
 else if (format[(*i) - 1] == '0')
-numelse = prec(numelse, '0', len);
+numelse = prec(numelse, '0', len, atoi(&(format[(*i)])));
 else if (format[(*i) - 1] == '-')
-width(numelse, '-', len), *i = (*i) + 1;
-else if (format[(*i)] == '6' || format[(*i)] == '*')
-width(numelse, 'n', len);
+width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
+else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+width(numelse, 'n', len, atoi(&(format[(*i)])) + 10);
+else if (atoi(&(format[(*i)])) < 10 || format[(*i)] == '*')
+width(numelse, 'n', len, atoi(&(format[(*i)])));
 if (format[(*i) + 1] == '+')
 {
 if (numelse >= 0)
@@ -162,11 +168,15 @@ return (*i);
 
 int check(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) char spec[] = "+ #lh6*", first[] = "uoxX";
+__attribute__((unused)) char spec[18] = "+ #lh*", first[] = "uoxX";
  __attribute__((unused)) char second[] = "csdib%", last[] = ".0-";
 __attribute__((unused)) char third[] = "Sp", final[] = "rR";
-__attribute__((unused)) int k;
-for (k = 0; k < 6; k++)
+__attribute__((unused)) int k, d = 49;
+
+for (k = 6; k <= 14; k++)
+spec[k] = d, d++;
+
+for (k = 0; k < 18; k++)
 {
 if (format[(*i) + 1] == first[k] || format[(*i) + 1] == last[k])
 break;
