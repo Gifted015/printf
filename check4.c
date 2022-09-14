@@ -141,7 +141,7 @@ _putchar(' '), *len = (*len) + 1;
 
 
 /**
- *check5 - handles non-custom specifiers ('.')
+ *check5 - handles non-custom specifiers '.' and '-'
  *@str: list of variables to replace specifiers with
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
@@ -151,25 +151,12 @@ _putchar(' '), *len = (*len) + 1;
 
 int check5(va_list str, const char *format, int *i, int *len)
 {
-int test = 6;
-if (format[(*i) + 2] == 'x' || (format[(*i) + 1] > 48 && format[(*i) + 1] < 58))
-{
-if (format[(*i) + 2] == '*')
-{
-test = va_arg(str, int);
-if (test == 0)
-{
-*i = (*i) + 3;
-}
-}
-
-if (test != 0)
+if (format[(*i) + 2] == '*' || (format[(*i) + 2] > 48 && format[(*i) + 2] < 55))
 {
 *i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
 *len = -1;
 *i = check(str, format, i, len);
-}
 }
 
 else if (format[(*i) + 2] == '0')
