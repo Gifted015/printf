@@ -11,18 +11,20 @@
 
 int word(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) int x, y;
+__attribute__((unused)) int x, y, val;
 __attribute__((unused)) char *words, chr;
 
 
 if (format[(*i) + 1] == 'c')
 {
+if (format[(*i)] == '*')
+width(1, 'c', len, va_arg(str, int));
 chr = va_arg(str, int);
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(1, 'c', len, atoi(&(format[(*i)])));
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(1, 'c', len, atoi(&(format[(*i)])) + 10);
-else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(1, 'c', len, atoi(&(format[(*i)])));
 _putchar(chr);
 *len = (*len) + 1;
@@ -32,6 +34,9 @@ _putchar(chr);
 
 else if (format[(*i) + 1] == 's')
 {
+if (format[(*i)] == '*')
+val = va_arg(str, int);
+
 words = va_arg(str, char *);
 
 if (words == NULL)
@@ -45,9 +50,11 @@ for (y = 0; words[y] != '\0'; y++)
 { }
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 y = prec(y, 's', len, atoi(&(format[(*i)])));
+else if (format[(*i)] == '*')
+width(y, 's', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(y, 's', len, atoi(&(format[(*i)])) + 10);
-else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(y, 's', len, atoi(&(format[(*i)])));
 for (x = 0; x < y; x++)
 {
@@ -93,10 +100,13 @@ else if (format[(*i) - 1] == '0')
 numelse = prec(numelse, '0', len, atoi(&(format[(*i)])));
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
+else if (format[(*i)] == '*')
+width(numelse, 'n', len, va_arg(str, int));
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(numelse, 'n', len, atoi(&(format[(*i)])) + 10);
-else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(numelse, 'n', len, atoi(&(format[(*i)])));
+
 if (format[(*i) + 1] == '+')
 {
 if (numelse >= 0)

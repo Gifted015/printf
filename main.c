@@ -12,8 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%s%d bytes in %i %c%c\n", "There is ", 1024, 1, 'K', 'B');
-	len2 = printf("%s%d bytes in %i %c%c\n", "There is ", 1024, 1, 'K', 'B');
+	len = _printf("%*s%*c", 4, "Best", 4, '\n');
+	len2 = printf("%*s%*c",  4, "Best", 4, '\n');
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -22,8 +22,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%s%i bytes in %d %c%c\n", "There is ", 1024, 1, 'K', 'B');
-	len2 = printf("%s%i bytes in %d %c%c\n", "There is ", 1024, 1, 'K', 'B');
+	len = _printf("%*s%*c", 11, "Best", 1, '\n');
+	len2 = printf("%*s%*c", 11, "Best", 1, '\n');
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

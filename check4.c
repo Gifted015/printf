@@ -152,7 +152,7 @@ _putchar(' '), *len = (*len) + 1;
 int check5(va_list str, const char *format, int *i, int *len)
 {
 int test = 6;
-if (atoi(&(format[(*i) + 2])) <= 6 || format[(*i) + 2] == '*')
+if (format[(*i) + 2] == 'x' || (format[(*i) + 1] > 48 && format[(*i) + 1] < 58))
 {
 if (format[(*i) + 2] == '*')
 {
@@ -182,7 +182,7 @@ return (*i);
 }
 
 /**
- *check4 - handles non-custom specifiers ('+', ' ' & '#')
+ *check4 - handles non-custom specifiers ('+', ' ', 'l', 'h', '*', '#' && numbers)
  *@str: list of variables to replace specifiers with
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
@@ -200,7 +200,6 @@ if (format[(*i) + 1] == '+')
 else if (format[(*i) + 1] == '*')
 {
 *i = (*i) + 1;
-va_arg(str, int);
 if (format[(*i) + 1] == '\0')
 *len = -1;
 *i = check(str, format, i, len);
