@@ -46,10 +46,10 @@ null(len);
 
 else
 {
-if (format[(*i)] != '-')
-{
 for (y = 0; words[y] != '\0'; y++)
 { }
+if (format[(*i) - 1] != '-')
+{
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 y = prec(y, 's', len, atoi(&(format[(*i)])));
 else if (format[(*i)] == '*')
@@ -69,8 +69,13 @@ for (x = 0; x < y; x++)
 _putchar(words[x]);
 *len = (*len) + 1;
 }
-if (format[(*i)] == '-')
+if (format[(*i) - 1] == '-')
 {
+if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+width(y, 's', len, atoi(&(format[(*i)])) + 10);
+else if (format[(*i)] == '*')
+width(y, 's', len, val);
+else
 width(y, 's', len, atoi(&(format[(*i)])));
 }
 }

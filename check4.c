@@ -153,6 +153,9 @@ int check5(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 2] == '*' || (format[(*i) + 2] > 48 && format[(*i) + 2] < 55))
 {
+if (format[(*i) + 3] > 48 && format[(*i) + 3] < 58)
+*i = (*i) + 3;
+else
 *i = (*i) + 2;
 if (format[(*i) + 1] == '\0')
 *len = -1;
