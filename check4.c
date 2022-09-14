@@ -166,7 +166,7 @@ else if (format[(*i) + 2] == '0')
 *i = (*i) + 3;
 
 else
-*i = (*i) + 2;
+*i = (*i) + 1;
 
 return (*i);
 }
