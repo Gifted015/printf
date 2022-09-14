@@ -133,7 +133,10 @@ return (*i);
 int numbers(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) unsigned long int num;
-__attribute__((unused)) int numelse;
+__attribute__((unused)) int numelse, val;
+
+if (format[(*i)] == '*')
+val = va_arg(str, int);
 
 if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
@@ -154,7 +157,7 @@ numelse = prec(numelse, '0', len, atoi(&(format[(*i)])));
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (format[(*i)] == '*')
-width(numelse, 'n', len, va_arg(str, int));
+width(numelse, 'n', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(numelse, 'n', len, atoi(&(format[(*i)])) + 10);
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
