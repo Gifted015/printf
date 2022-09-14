@@ -12,9 +12,9 @@ int _pow(int base, int power)
 {
 int ans = base, x;
 
-for (x = 1; x <= power; x++)
+for (x = 1; x < power; x++)
 {
-ans *= ans;
+ans = ans * base;
 }
 
 return (ans);

@@ -129,7 +129,7 @@ if (numelse < 0)
 y = _pow(10, (count - 2));
 }
 
-if (numelse != 0 && numelse < 1000000)
+if (numelse != 0 && numelse < _pow(10, count))
 {
 for (x = numelse; x / y == 0; y = y/10)
 {
