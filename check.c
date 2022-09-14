@@ -51,7 +51,12 @@ for (y = 0; words[y] != '\0'; y++)
 if (format[(*i) - 1] != '-')
 {
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+y = prec(y, 's', len, val);
+else
 y = prec(y, 's', len, atoi(&(format[(*i)])));
+}
 else if (format[(*i)] == '*')
 width(y, 's', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
