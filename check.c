@@ -18,16 +18,44 @@ __attribute__((unused)) char *words, chr;
 if (format[(*i) + 1] == 'c')
 {
 if (format[(*i)] == '*')
-width(1, 'c', len, va_arg(str, int));
+val = va_arg(str, int);
+
 chr = va_arg(str, int);
+if (format[(*i) - 1] != '-')
+{
+if (format[(*i) - 2] != '-')
+{
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+prec(1, 'c', len, val);
+else
 prec(1, 'c', len, atoi(&(format[(*i)])));
+}
+else if (format[(*i)] == '*')
+width(1, 'c', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+{
+if (format[(*i) - 2] == '.')
+width(1, 'c', len, 1);
+else
 width(1, 'c', len, atoi(&(format[(*i)])) + 10);
+}
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(1, 'c', len, atoi(&(format[(*i)])));
+}
+}
 _putchar(chr);
 *len = (*len) + 1;
+if (format[(*i) - 1] == '-' || format[(*i) - 2] == '-')
+{
+if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
+width(1, 'c', len, atoi(&(format[(*i)])) + 10);
+else if (format[(*i)] == '*')
+width(1, 'c', len, val);
+else
+width(1, 'c', len, atoi(&(format[(*i)])));
+}
 *i = (*i) + 1;
 }
 
@@ -50,6 +78,8 @@ for (y = 0; words[y] != '\0'; y++)
 { }
 if (format[(*i) - 1] != '-')
 {
+if (format[(*i) - 2] != '-')
+{
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
@@ -69,12 +99,13 @@ width(y, 's', len, atoi(&(format[(*i)])) + 10);
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(y, 's', len, atoi(&(format[(*i)])));
 }
+}
 for (x = 0; x < y; x++)
 {
 _putchar(words[x]);
 *len = (*len) + 1;
 }
-if (format[(*i) - 1] == '-')
+if (format[(*i) - 1] == '-' || format[(*i) - 2] == '-')
 {
 if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(y, 's', len, atoi(&(format[(*i)])) + 10);
