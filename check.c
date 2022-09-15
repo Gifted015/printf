@@ -151,7 +151,12 @@ if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
 else if (format[(*i) - 1] == '.')
+{
+if (format[(*i)] == '*')
+numelse = prec(numelse, 'n', len, val);
+else
 numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
+}
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (format[(*i)] == '*')
