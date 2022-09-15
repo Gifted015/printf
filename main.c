@@ -12,8 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%*d%*i\n", 6, 1024, 6, 1024);
-	len2 = printf("%*d%*i\n", 6, 1024, 6, 1024);
+	len = _printf("%.6d%.6i\n", 1024, 1024);
+	len2 = printf("%.6d%.6i\n", 1024, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -22,8 +22,28 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-        len = _printf("%*d%*i\n", 6, 102498402, 6, 102498402);
-	len2 = printf("%*d%*i\n", 6, 102498402, 6, 102498402);
+	len = _printf("%.6d%.6i\n", 102498402, 102498402);
+	len2 = printf("%.6d%.6i\n", 102498402, 102498402);
+	printf("len: %d\tlen2: %d\n", len, len2);
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	len = _printf("%.0d%.0i\n", 1024, 1024);
+	len2 = printf("%.0d%.0i\n", 1024, 1024);
+	printf("len: %d\tlen2: %d\n", len, len2);
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	len = _printf("%.d%.i\n", 1024, 1024);
+	len2 = printf("%.d%.i\n", 1024, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

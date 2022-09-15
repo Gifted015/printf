@@ -152,8 +152,6 @@ _putchar(' '), *len = (*len) + 1;
 }
 else if (format[(*i) - 1] == '.')
 numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
-else if (format[(*i) - 1] == '0')
-numelse = prec(numelse, '0', len, atoi(&(format[(*i)])));
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (format[(*i)] == '*')
