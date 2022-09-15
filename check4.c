@@ -165,8 +165,14 @@ if (format[(*i) + 1] == '\0')
 else if (format[(*i) + 2] == '0')
 *i = (*i) + 3;
 
-else
+else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
+{
 *i = (*i) + 1;
+*i = check(str, format, i, len);
+}
+
+else
+*i = (*i) + 2;
 
 return (*i);
 }
