@@ -12,8 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%.6u;%.6u;%.0u;%.u\n", 1024, 1024984020, 1024, 1024);
-	len2 = printf("%.6u;%.6u;%.0u;%.u\n", 1024, 1024984020, 1024, 1024);
+	len = _printf("%.*u;%.*u;%.*u\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len2 = printf("%.*u;%.*u;%.*u\n", 6, 1024, 6, 1024984020, 0, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -22,8 +22,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%.6o;%.6o;%.0o;%.o\n", 1024, 1024984020, 1024, 1024);
-	len2 = printf("%.6o;%.6o;%.0o;%.o\n", 1024, 1024984020, 1024, 1024);
+	len = _printf("%.*o;%.*o;%.*o\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len2 = printf("%.*o;%.*o;%.*o\n", 6, 1024, 6, 1024984020, 0, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -32,8 +32,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%.6x;%.6x;%.0x;%.x\n", 1024, 1024984020, 1024, 1024);
-	len2 = printf("%.6x;%.6x;%.0x;%.x\n", 1024, 1024984020, 1024, 1024);
+	len = _printf("%.*x;%.*x;%.*x\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len2 = printf("%.*x;%.*x;%.*x\n", 6, 1024, 6, 1024984020, 0, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -42,8 +42,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%.6X;%.6X;%.0X;%.X\n", 1024, 1024984020, 1024, 1024);
-	len2 = printf("%.6X;%.6X;%.0X;%.X\n", 1024, 1024984020, 1024, 1024);
+	len = _printf("%.*X;%.*X;%.*X\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len2 = printf("%.*X;%.*X;%.*X\n", 6, 1024, 6, 1024984020, 0, 1024);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

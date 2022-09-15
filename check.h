@@ -26,44 +26,28 @@ x = va_arg(str, unsigned int);
 
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
-if (format[(*i)] == 'l')
-prec(x1, 'o', len, atoi(&(format[*i])));
+if (format[(*i)] == '*')
+prec(x, 'o', len, val);
 else
 prec(x, 'o',  len, atoi(&(format[*i])));
 }
 
 else if (format[(*i) - 1] == '-')
 {
-if (format[(*i)] == 'l')
-width(x1, '-', len, atoi(&(format[*i]))), *i = (*i) + 1;
-else
 width(x, '-', len, atoi(&(format[*i]))), *i = (*i) + 1;
 return (*i);
 }
 
 else if (format[(*i)] == '*')
-{
-if (format[(*i)] == 'l')
-width(x1, 'o', len, val);
-else
 width(x, 'o',  len, val);
-}
 
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
-{
-if (format[(*i)] == 'l')
-width(x1, 'o', len, atoi(&(format[*i])) + 10);
-else
 width(x, 'o',  len, atoi(&(format[*i])) + 10);
-}
+
 
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
-{
-if (format[(*i)] == 'l')
-width(x1, 'o', len, atoi(&(format[*i])));
-else
 width(x, 'o',  len, atoi(&(format[*i])));
-}
+
 
 if (format[(*i)] == 'l')
 {
@@ -72,9 +56,12 @@ if (x != '\0')
 print_number(x1 / 10, len);
 print_number(x1 % 10, len);
 }
+
 else
 print_number(x, len);
+
 *i = (*i) + 1;
+
 return (*i);
 }
 
@@ -121,7 +108,12 @@ bin[a] = x % 8;
 }
 
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+prec(a, 'x', len, val);
+else
 prec(a, 'x', len, atoi(&(format[*i])));
+}
 else if (format[(*i)] == '*')
 width(a, 'x', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
@@ -171,7 +163,12 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 if (test == 0)
 {
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+prec(test, 'n', len, val);
+else
 prec(test, 'n', len, atoi(&(format[*i])));
+}
 else if (format[(*i) - 1] == '-')
 width(test, '-', len, atoi(&(format[*i])));
 else if (format[(*i)] == '*')
@@ -193,7 +190,12 @@ bin[a] = x % 16;
 }
 
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+prec(a, 'x', len, val);
+else
 prec(a, 'x', len, atoi(&(format[*i])));
+}
 else if (format[(*i)] == '*')
 width(a, 'x', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
