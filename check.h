@@ -14,8 +14,11 @@
 
 int unsignint(va_list str, const char *format, int *i, int *len)
 {
-__attribute__((unused)) unsigned long int x;
-__attribute__((unused)) unsigned long int x1;
+__attribute__((unused)) unsigned long int x, x1, val;
+
+if (format[(*i)] == '*')
+val = va_arg(str, int);
+
 if (format[(*i)] == 'l')
 x1 = va_arg(str, unsigned long int);
 else
@@ -38,6 +41,14 @@ width(x, '-', len, atoi(&(format[*i]))), *i = (*i) + 1;
 return (*i);
 }
 
+else if (format[(*i)] == '*')
+{
+if (format[(*i)] == 'l')
+width(x1, 'o', len, val);
+else
+width(x, 'o',  len, val);
+}
+
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 {
 if (format[(*i)] == 'l')
@@ -46,7 +57,7 @@ else
 width(x, 'o',  len, atoi(&(format[*i])) + 10);
 }
 
-else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 {
 if (format[(*i)] == 'l')
 width(x1, 'o', len, atoi(&(format[*i])));
@@ -80,7 +91,10 @@ return (*i);
 int octal(__attribute__((unused)) va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) unsigned long int a, x, test;
-int *bin = NULL;
+__attribute__((unused)) int *bin = NULL, val;
+
+if (format[(*i)] == '*')
+val = va_arg(str, int);
 
 if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);
@@ -108,9 +122,11 @@ bin[a] = x % 8;
 
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(a, 'x', len, atoi(&(format[*i])));
+else if (format[(*i)] == '*')
+width(a, 'x', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(a, 'x', len, atoi(&(format[*i])) + 10);
-else if (((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')  && format[(*i) - 1] != '-')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)  && format[(*i) - 1] != '-')
 width(a, 'x', len, atoi(&(format[*i])));
 
 for (x = a - 1; x >= 1; x--)
@@ -139,7 +155,10 @@ int hexadec(va_list str, const char *format, int *i, int *len)
 unsigned long int a, x, test;
 __attribute__((unused)) char low[] = "0123456789abcdef";
 __attribute__((unused)) char upp[] = "0123456789ABCDEF";
-int *bin = NULL, b;
+__attribute__((unused)) int *bin = NULL, b, val;
+
+if (format[(*i)] == '*')
+val = va_arg(str, int);
 
 if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);
@@ -155,9 +174,11 @@ if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(test, 'n', len, atoi(&(format[*i])));
 else if (format[(*i) - 1] == '-')
 width(test, '-', len, atoi(&(format[*i])));
+else if (format[(*i)] == '*')
+width(test, 'n', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(test, 'n', len, atoi(&(format[*i])) + 10);
-else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0))
 width(test, 'n', len, atoi(&(format[*i])));
 if (format[(*i) - 1] != '-')
 print_number(0, len);
@@ -173,10 +194,11 @@ bin[a] = x % 16;
 
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 prec(a, 'x', len, atoi(&(format[*i])));
-
+else if (format[(*i)] == '*')
+width(a, 'x', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(a, 'x', len, atoi(&(format[*i])) + 10);
-else if (((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) || format[(*i)] == '*')  && format[(*i) - 1] != '-')
+else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) && format[(*i) - 1] != '-')
 width(a, 'x', len, atoi(&(format[*i])));
 
 for (x = a - 1; x >= 1; x--)

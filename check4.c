@@ -141,7 +141,7 @@ _putchar(' '), *len = (*len) + 1;
 
 
 /**
- *check5 - handles non-custom specifiers '.' and '-'
+ *check5 - handles non-custom specifiers '.', '0' and '-'
  *@str: list of variables to replace specifiers with
  *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
