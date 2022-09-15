@@ -151,6 +151,15 @@ _putchar(' '), *len = (*len) + 1;
 
 int check5(va_list str, const char *format, int *i, int *len)
 {
+__attribute__((unused)) char norm[] = "diuoxX";
+__attribute__((unused)) int x;
+
+for (x = 0; x < 6; x++)
+{
+if (format[(*i) + 2] == norm[x])
+break;
+}
+ 
 if (format[(*i) + 2] == '*' || (format[(*i) + 2] > 47 && format[(*i) + 2] < 55))
 {
 if (format[(*i) + 3] > 48 && format[(*i) + 3] < 58)
@@ -162,7 +171,7 @@ if (format[(*i) + 1] == '\0')
 *i = check(str, format, i, len);
 }
 
-else if (format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i')
+else if (format[(*i) + 2] == norm[x])
 {
 *i = (*i) + 1;
 *i = check(str, format, i, len);
