@@ -12,8 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%.0o", 0);
-	len2 = printf("%.0o", 0);
+	len = _printf("%.*o", 0, 0);
+	len2 = printf("%.*o", 0, 0);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

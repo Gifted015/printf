@@ -64,10 +64,8 @@ width(x, 'o',  len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(x, 'o',  len, atoi(&(format[*i])) + 10);
 
-
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(x, 'o',  len, atoi(&(format[*i])));
-
 
 if (format[(*i)] == 'l')
 {
@@ -109,6 +107,7 @@ if (val == '\0' && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
 *i = (*i) + 1;
 
 return (*i);
+}
 }
 
 if (format[(*i)] == 'l')
@@ -207,6 +206,7 @@ if (val == '\0' && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
 *i = (*i) + 1;
 
 return (*i);
+}
 }
 
 if (format[(*i)] == 'l')

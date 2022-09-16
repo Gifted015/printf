@@ -164,6 +164,7 @@ if (val == '\0' && (format[(*i)] == '.' || format[(*i)] == '0'))
 
 return (*i);
 }
+}
 
 if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
@@ -194,7 +195,7 @@ _putchar(' '), *len = (*len) + 1;
 
 if (format[(*i)] != 'l' || format[(*i)] != 'h')
 {
-else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
 {
