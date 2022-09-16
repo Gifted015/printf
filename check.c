@@ -137,6 +137,9 @@ __attribute__((unused)) long int numelse, val;
 
 if (format[(*i) + 1] == '+')
 {
+if (format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i')
+*i = (*i) + 1;
+else
 *i = (*i) + 2;
 
 if (format[(*i) + 1] == ' ')
@@ -151,7 +154,7 @@ num = va_arg(str, unsigned long int);
 else
 numelse = va_arg(str, int);
 
-if (format[(*i) - 1] == '+')
+if (format[(*i) - 1] == '+' || format[(*i)] == '+')
 {
 if (format[(*i)] == 'l')
 _putchar('+'), *len = (*len) + 1;
