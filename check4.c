@@ -196,6 +196,8 @@ int check4(va_list str, const char *format, int *i, int *len)
 {
 if (format[(*i) + 1] == '+' || format[(*i) + 1] == ' ')
 {
+if (format[(*i) + 1] == ' ')
+*i = (*i) + 1;
 *i = numbers(str, format, i, len);
 }
 
