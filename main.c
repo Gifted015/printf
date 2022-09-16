@@ -11,10 +11,9 @@
 int main(void)
 {
 	int len, len2;
-	void *ptr = (void *)0x7faf51f0f608;
 
-	len = _printf("%-26p\n", ptr);
-	len2 = printf("%-26p\n", ptr);
+	len = _printf("%+ld;%+li\n%+ld;%+li\n%+ld;%+li\n", UINT_MAX, UINT_MAX, 2048, 2048, 0, 0);
+	len2 = printf("%+ld;%+li\n%+ld;%+li\n%+ld;%+li\n", UINT_MAX, UINT_MAX, 2048, 2048, 0, 0);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -23,8 +22,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%.0d", 0);
-	len2 = printf("%.0d", 0);
+	len = _printf("%.d", 0);
+	len2 = printf("%.d", 0);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -33,13 +32,5 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%06d", 1024);
-	len2 = printf("%06d", 1024);
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}	return (0);
+	return (0);
 }

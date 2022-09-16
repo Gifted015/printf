@@ -133,7 +133,15 @@ return (*i);
 int numbers(va_list str, const char *format, int *i, int *len)
 {
 __attribute__((unused)) unsigned long int num;
-__attribute__((unused)) int numelse, val;
+__attribute__((unused)) long int numelse, val;
+
+if (format[(*i) + 1] == '+')
+{
+*i = (*i) + 2;
+
+if (format[(*i) + 1] == ' ')
+*i = (*i) + 1;
+}
 
 if (format[(*i)] == '*')
 val = va_arg(str, int);
@@ -142,6 +150,20 @@ if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
 else
 numelse = va_arg(str, int);
+
+if (format[(*i) - 1] == '+')
+{
+if (format[(*i)] == 'l')
+{
+if (num >= 0)
+_putchar('+'), *len = (*len) + 1;
+}
+else
+{
+if (numelse >= 0)
+_putchar('+'), *len = (*len) + 1;
+}
+}
 
 if (format[(*i)] != 'l' || format[(*i)] != 'h')
 {
@@ -154,11 +176,13 @@ else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
 numelse = prec(numelse, 'n', len, val);
-else if ((format[(*i)] == '0' || format[(*i)] == '.') && numelse == 0)
+else if (format[(*i)] == '0' && numelse == 0)
 *i = (*i) + 1;
 else
 numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
 }
+else if (format[(*i)] == '.' && numelse == 0)
+*i = (*i) + 1;
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (format[(*i)] == '*')
@@ -167,15 +191,6 @@ else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
 width(numelse, 'n', len, atoi(&(format[(*i)])) + 10);
 else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(numelse, 'n', len, atoi(&(format[(*i)])));
-
-if (format[(*i) + 1] == '+')
-{
-if (numelse >= 0)
-_putchar('+'), *len = (*len) + 1;
-*i = (*i) + 1;
-if (format[(*i) + 1] == ' ')
-*i = (*i) + 1;
-}
 }
 
 if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
