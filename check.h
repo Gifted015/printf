@@ -24,13 +24,22 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
+{
+if (val == '0' && x == 0)
+*i = (*i) + 1;
 prec(x, 'o', len, val);
+}
+else if (format[(*i)] == '0' && x == 0)
+*i = (*i) + 1;
 else
 prec(x, 'o',  len, atoi(&(format[*i])));
 }
+
+else if (format[(*i)] == '.' && x == 0)
+*i = (*i) + 1;
 
 else if (format[(*i) - 1] == '-')
 {
@@ -93,9 +102,24 @@ _putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
 {
-if (format[(*i) - 1] == '-')
-width(test, '-', len, atoi(&(format[*i])));
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+{
+if (format[(*i)] == '*')
+{
+if (val == '0')
+*i = (*i) + 1;
+prec(test, 'n', len, val);
+}
+else if (format[(*i)] == '0')
+*i = (*i) + 1;
 else
+prec(test, 'n', len, atoi(&(format[*i])));
+}
+else if (format[(*i) - 1] == '-')
+width(test, '-', len, atoi(&(format[*i])));
+else if (format[(*i)] == '.')
+*i = (*i) + 1;
+else if (format[(*i) - 1] != '-')
 print_number(0, len);
 }
 
@@ -107,7 +131,7 @@ bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 8;
 }
 
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
 prec(a, 'x', len, val);
@@ -162,15 +186,23 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
+{
+if (val == '0')
+*i = (*i) + 1;
 prec(test, 'n', len, val);
+}
+else if (format[(*i)] == '0')
+*i = (*i) + 1;
 else
 prec(test, 'n', len, atoi(&(format[*i])));
 }
 else if (format[(*i) - 1] == '-')
 width(test, '-', len, atoi(&(format[*i])));
+else if (format[(*i)] == '.')
+*i = (*i) + 1;
 else if (format[(*i)] == '*')
 width(test, 'n', len, val);
 else if (atoi(&(format[(*i)])) < 10 && format[(*i) - 1] == '1')
