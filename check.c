@@ -154,10 +154,8 @@ numelse = va_arg(str, int);
 if (format[(*i) - 1] == '+')
 {
 if (format[(*i)] == 'l')
-{
-if (num >= 0)
 _putchar('+'), *len = (*len) + 1;
-}
+
 else
 {
 if (numelse >= 0)
