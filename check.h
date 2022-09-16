@@ -24,6 +24,8 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
+if ((x != '\0' || x1 != '\0') && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
+{
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
@@ -32,14 +34,9 @@ if (val == '0' && x == 0)
 *i = (*i) + 1;
 prec(x, 'o', len, val);
 }
-else if (format[(*i)] == '0' && x == 0)
-*i = (*i) + 1;
 else
 prec(x, 'o',  len, atoi(&(format[*i])));
 }
-
-else if (format[(*i)] == '.' && x == 0)
-*i = (*i) + 1;
 
 else if (format[(*i) - 1] == '-')
 {
@@ -70,7 +67,7 @@ else
 print_number(x, len);
 
 *i = (*i) + 1;
-
+}
 return (*i);
 }
 
