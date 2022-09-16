@@ -175,7 +175,11 @@ _putchar(' '), *len = (*len) + 1;
 else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
+{
+if (val == '0' && numelse == 0)
+*i = (*i) + 1;
 numelse = prec(numelse, 'n', len, val);
+}
 else if (format[(*i)] == '0' && numelse == 0)
 *i = (*i) + 1;
 else
