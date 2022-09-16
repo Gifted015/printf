@@ -143,9 +143,9 @@ else
 *i = (*i) + 2;
 }
 
-if (format[(*i) + 1] == ' ')
+if (format[(*i)] == ' ')
 {
-if (format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i')
+if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 *i = (*i) + 1;
 else
 *i = (*i) + 2;
