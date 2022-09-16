@@ -24,7 +24,7 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
 {
 if (format[(*i)] == '*')
 prec(x, 'o', len, val);
@@ -107,7 +107,7 @@ bin = realloc(bin, (sizeof(int) * (a + 1)));
 bin[a] = x % 8;
 }
 
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
 {
 if (format[(*i)] == '*')
 prec(a, 'x', len, val);
@@ -162,7 +162,7 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
-if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
 {
 if (format[(*i)] == '*')
 prec(test, 'n', len, val);
