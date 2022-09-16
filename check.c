@@ -154,7 +154,7 @@ else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
 numelse = prec(numelse, 'n', len, val);
-else if (format[(*i)] == '0' && numelse == 0)
+else if ((format[(*i)] == '0' || format[(*i)] == '.') && numelse == 0)
 *i = (*i) + 1;
 else
 numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
