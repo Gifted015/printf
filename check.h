@@ -24,8 +24,13 @@ x1 = va_arg(str, unsigned long int);
 else
 x = va_arg(str, unsigned int);
 
-if ((x != '\0' || x1 != '\0') && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
+if (x == '\0' && (format[(*i)] == '.' || format[(*i)] == '0'))
 {
+*i = (*i) + 1;
+
+return (*i);
+}
+
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
@@ -67,7 +72,7 @@ else
 print_number(x, len);
 
 *i = (*i) + 1;
-}
+
 return (*i);
 }
 
@@ -99,6 +104,12 @@ _putchar('0'), *len = (*len) + 1;
 
 if (test == 0)
 {
+if (format[(*i)] == '.' || format[(*i)] == '0')
+{
+*i = (*i) + 1;
+
+return (*i);
+}
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
@@ -183,6 +194,12 @@ _putchar('0'), _putchar(format[(*i) + 1]), *len = (*len) + 2;
 
 if (test == 0)
 {
+if (format[(*i)] == '.' || format[(*i)] == '0')
+{
+*i = (*i) + 1;
+
+return (*i);
+}
 if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')
