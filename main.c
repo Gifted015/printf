@@ -11,9 +11,10 @@
 int main(void)
 {
 	int len, len2;
+	void *ptr = (void *)0x7faf51f0f608;
 
-	len = _printf("%.*u;%.*u;%.*u\n", 6, 1024, 6, 1024984020, 0, 1024);
-	len2 = printf("%.*u;%.*u;%.*u\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len = _printf("%6p\n", ptr);
+	len2 = printf("%6p\n", ptr);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)
@@ -22,28 +23,8 @@ int main(void)
 		fflush(stdout);
 		return (1);
 	}
-	len = _printf("%.*o;%.*o;%.*o\n", 6, 1024, 6, 1024984020, 0, 1024);
-	len2 = printf("%.*o;%.*o;%.*o\n", 6, 1024, 6, 1024984020, 0, 1024);
-	printf("len: %d\tlen2: %d\n", len, len2);
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}
-	len = _printf("%.*x;%.*x;%.*x\n", 6, 1024, 6, 1024984020, 0, 1024);
-	len2 = printf("%.*x;%.*x;%.*x\n", 6, 1024, 6, 1024984020, 0, 1024);
-	printf("len: %d\tlen2: %d\n", len, len2);
-	fflush(stdout);
-	if (len != len2)
-	{
-		printf("Lengths differ.\n");
-		fflush(stdout);
-		return (1);
-	}
-	len = _printf("%.*X;%.*X;%.*X\n", 6, 1024, 6, 1024984020, 0, 1024);
-	len2 = printf("%.*X;%.*X;%.*X\n", 6, 1024, 6, 1024984020, 0, 1024);
+	len = _printf("%26p\n", ptr);
+	len2 = printf("%26p\n", ptr);
 	printf("len: %d\tlen2: %d\n", len, len2);
 	fflush(stdout);
 	if (len != len2)

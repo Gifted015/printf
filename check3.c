@@ -3,16 +3,21 @@
 /**
  *pointer - handles specifiers (p)
  *@str: list of variables to replace specifiers with
+ *@format: the string being printed (containing specifiers)
  *@i: position of specifier indicator (%) in format
  *@len: used in counting the number characters being printed
  *Return: nothing
  */
 
-int pointer(va_list str, int *i, int *len)
+int pointer(va_list str, const char *format, int *i, int *len)
 {
-long int add, *bin = NULL, x, a, b;
+long int add, *bin = NULL, x, a, b, val;
 void *point;
 char low[] = "0123456789abcdef", not[] = "0xffffffffffffffff";
+
+if (format[(*i)] == '*')
+val = va_arg(str, int);
+
 point = va_arg(str, void *);
 
 if (point == NULL)
@@ -26,6 +31,7 @@ if (add < 0)
 for (x = 0; not[x] != '\0'; x++)
 _putchar(not[x]), *len = (*len) + 1;
 }
+
 else
 {
 for (x = add, a = 1; x > 0; x = (x / 16), a++)
@@ -33,8 +39,20 @@ for (x = add, a = 1; x > 0; x = (x / 16), a++)
 bin = realloc(bin, (sizeof(long int) * (a + 1)));
 bin[a] = x % 16;
 }
+
+if (atoi(&(format[(*i)])) < 10 && (format[(*i) - 1] > 48 && format[(*i) - 1] < 58))
+{
+if (format[(*i)] == '*')
+width(a + 2, 'x', len, val);
+else
+width(a + 2, 'x', len, (atoi(&(format[(*i)])) + (10 * (format[(*i) - 1] - 48))));
+}
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
+width(a + 2, 'x', len, atoi(&(format[(*i)])));
+
 _putchar('0'), _putchar('x');
 *len = (*len) + 2;
+
 for (x = a - 1; x >= 1; x--)
 {
 for (b = 0; low[b] != '\0'; b++)
@@ -119,7 +137,7 @@ if (format[(*i) + 1] == 'S')
 *i = wordhex(str, i, len);
 
 if (format[(*i) + 1] == 'p')
-*i = pointer(str, i, len);
+*i = pointer(str, format, i, len);
 
 return (*i);
 }
