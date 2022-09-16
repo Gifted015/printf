@@ -157,6 +157,8 @@ numelse = prec(numelse, 'n', len, val);
 else
 numelse = prec(numelse, 'n', len, atoi(&(format[(*i)])));
 }
+else if (format[(*i)] == '0' && numelse == 0)
+*i = (*i) + 1;
 else if (format[(*i) - 1] == '-')
 width(numelse, '-', len, atoi(&(format[(*i)]))), *i = (*i) + 1;
 else if (format[(*i)] == '*')
@@ -176,7 +178,7 @@ if (format[(*i) + 1] == ' ')
 }
 }
 
-if ((format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i') && format[(*i)] != '0')
+if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 {
 if (format[(*i)] == 'l')
 print_number(num, len);

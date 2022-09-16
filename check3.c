@@ -42,7 +42,7 @@ bin[a] = x % 16;
 
 if (format[(*i)] == '*' && format[(*i) - 1] != '-')
 width(a + 2, 'x', len, val);
-else if (atoi(&(format[(*i)])) < 10 && (format[(*i) - 1] > 48 && format[(*i) - 1] < 58))
+else if (atoi(&(format[(*i)])) < 10 && (format[(*i) - 1] > 48 && format[(*i) - 1] < 58)  && format[(*i) - 2] != '-')
 width(a + 2, 'x', len, (atoi(&(format[(*i)])) + (10 * (format[(*i) - 1] - 48))));
 else if ((atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0) && format[(*i) - 1] != '-')
 width(a + 2, 'x', len, atoi(&(format[(*i)])));
@@ -62,7 +62,9 @@ if (format[(*i) - 1] == '-')
 {
 if (format[(*i)] == '*')
 width(a + 2, 'x', len, val);
-else
+else if (atoi(&(format[(*i)])) < 10 && (format[(*i) - 1] > 48 && format[(*i) - 1] < 58))
+width(a + 2, 'x', len, (atoi(&(format[(*i)])) + (10 * (format[(*i) - 1] - 48))));
+else if (atoi(&(format[(*i)])) < 10 && atoi(&(format[(*i)])) > 0)
 width(a + 2, 'x', len, atoi(&(format[(*i)])));
 }
 }
