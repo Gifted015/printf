@@ -141,9 +141,14 @@ if (format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i')
 *i = (*i) + 1;
 else
 *i = (*i) + 2;
+}
 
 if (format[(*i) + 1] == ' ')
+{
+if (format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i')
 *i = (*i) + 1;
+else
+*i = (*i) + 2;
 }
 
 if (format[(*i)] == '*')
