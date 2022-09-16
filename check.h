@@ -17,7 +17,16 @@ int unsignint(va_list str, const char *format, int *i, int *len)
 __attribute__((unused)) unsigned long int x, x1, val;
 
 if (format[(*i)] == '*')
+{
 val = va_arg(str, int);
+
+if (val == '\0' && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
+{
+*i = (*i) + 1;
+
+return (*i);
+}
+}
 
 if (format[(*i)] == 'l')
 x1 = va_arg(str, unsigned long int);
@@ -92,7 +101,15 @@ __attribute__((unused)) unsigned long int a, x, test;
 __attribute__((unused)) int *bin = NULL, val;
 
 if (format[(*i)] == '*')
+{
 val = va_arg(str, int);
+
+if (val == '\0' && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
+{
+*i = (*i) + 1;
+
+return (*i);
+}
 
 if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);
@@ -182,7 +199,15 @@ __attribute__((unused)) char upp[] = "0123456789ABCDEF";
 __attribute__((unused)) int *bin = NULL, b, val;
 
 if (format[(*i)] == '*')
+{
 val = va_arg(str, int);
+
+if (val == '\0' && (format[(*i) - 1] == '.' || format[(*i) - 1] == '0'))
+{
+*i = (*i) + 1;
+
+return (*i);
+}
 
 if (format[(*i)] == 'l')
 test = va_arg(str, unsigned long int);

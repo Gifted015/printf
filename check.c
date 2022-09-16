@@ -146,8 +146,24 @@ if (format[(*i) + 1] == ' ')
 *i = (*i) + 1;
 }
 
+if (format[(*i)] == ' ')
+{
+if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
+{ }
+else
+*i = (*i) + 1;
+}
+
 if (format[(*i)] == '*')
+{
 val = va_arg(str, int);
+
+if (val == '\0' && (format[(*i)] == '.' || format[(*i)] == '0'))
+{
+*i = (*i) + 1;
+
+return (*i);
+}
 
 if (format[(*i)] == 'l')
 num = va_arg(str, unsigned long int);
@@ -158,7 +174,6 @@ if (format[(*i) - 1] == '+' || format[(*i)] == '+')
 {
 if (format[(*i)] == 'l')
 _putchar('+'), *len = (*len) + 1;
-
 else
 {
 if (numelse >= 0)
@@ -166,13 +181,19 @@ _putchar('+'), *len = (*len) + 1;
 }
 }
 
-if (format[(*i)] != 'l' || format[(*i)] != 'h')
+if (format[(*i) - 1] == ' ' || format[(*i)] == ' ')
 {
-if (format[(*i)] == ' ')
+if (format[(*i)] == 'l')
+_putchar(' '), *len = (*len) + 1;
+else
 {
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
+}
+
+if (format[(*i)] != 'l' || format[(*i)] != 'h')
+{
 else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
 {
 if (format[(*i)] == '*')

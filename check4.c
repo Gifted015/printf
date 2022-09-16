@@ -194,7 +194,7 @@ return (*i);
 
 int check4(va_list str, const char *format, int *i, int *len)
 {
-if (format[(*i) + 1] == '+')
+if (format[(*i) + 1] == '+' || format[(*i) + 1] == ' ')
 {
 *i = numbers(str, format, i, len);
 }
@@ -207,7 +207,7 @@ if (format[(*i) + 1] == '\0')
 *i = check(str, format, i, len);
 }
 
-else if (format[(*i) + 1] == ' ' || (format[(*i) + 1] > 48 && format[(*i) + 1] < 58))
+else if (format[(*i) + 1] > 48 && format[(*i) + 1] < 58)
 {
 if (format[(*i + 2)] > 48 && format[(*i) + 2] < 58)
 *i = (*i) + 2;
