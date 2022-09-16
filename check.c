@@ -150,7 +150,7 @@ if (format[(*i)] == ' ')
 if (numelse >= 0)
 _putchar(' '), *len = (*len) + 1;
 }
-else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0')
+else if (format[(*i) - 1] == '.' || format[(*i) - 1] == '0' || format[(*i)] == '0')
 {
 if (format[(*i)] == '*')
 numelse = prec(numelse, 'n', len, val);
