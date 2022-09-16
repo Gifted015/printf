@@ -58,7 +58,7 @@ if (bin[x] == b)
 _putchar(low[b]), *len = (*len) + 1;
 }
 }
-if (format[(*i) - 1] == '-')
+if (format[(*i) - 1] == '-' || format[(*i) - 2] == '-')
 {
 if (format[(*i)] == '*')
 width(a + 2, 'x', len, val);
